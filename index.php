@@ -1,11 +1,11 @@
 <?php
 /**
- * BiliBlog 部分仿照B站样式的pjax主题
+ * BiliBlog 
  * 
  * @package biliblog
  * @author Menhood
  * @version 1.0.0
- * @link https://blog.menhood.wang/
+ * @link http://menhood.wang
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
@@ -74,9 +74,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                             <div class="row clearfix">
                                 <div class="col-md-12 column" style="margin-bottom: -20px;margin-top: 8px;">
                                     <div class="breadcrumb">
-                                        当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">Home</a> &raquo;</li>
+                                        当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">主页</a> &raquo;</li>
 	                                    <?php if ($this->is('index')): ?><!-- 页面为首页时 -->
-		                                Latest Post
+		                                最近文章
 	                                    <?php elseif ($this->is('post')): ?><!-- 页面为文章单页时 -->
 		                                <?php $this->category(); ?> &raquo; <?php $this->title() ?>
 	                                    <?php else: ?><!-- 页面为其他页时 -->
@@ -105,6 +105,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                                     #<?php $this->tags('# #', true, 'none'); ?>#
                                                 </div>
                                                 <div class="abstract">
+                                                    <div class="types"><?php $this->category(','); ?></div>
                                                     <div class="thumb">
                                                         <img src="<?php $this->fields->thumb();?>" />
                                                     </div>
@@ -183,10 +184,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                     <div class="row clearfix" id="smartFloat">
                                         <div class="col-md-12 column">
                                             <div class="card">
-                                                <p class="card-title">目录&nbsp;<a href="javascript:void(0);return false" id="closetoc">自闭</a></p>
+                                                <p class="card-title">目录&nbsp;<a href="javascript:void(0);" id="closetoc">自闭</a></p>
                                                 <div class="card-more"> <a href="javascript:void(0);" id="toggle" class="card-more-a a">OvO</a>
                                                 </div>
-                                                <div class="card-content" id="post-category"> </div>
+                                                <div class="card-content" id="post-category" style="overflow-y: scroll;max-height: 550px;"> </div>
                                             </div>
                                         </div>
                                     </div>
