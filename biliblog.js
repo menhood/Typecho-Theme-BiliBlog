@@ -3,13 +3,14 @@ $(document).on('pjax:send', function() {
   NProgress.start();
 })
 $(document).on('pjax:start', function() {
-  //$("#pjax-container").fadeOut(100);
+  $("#pjax-container").css({"-webkit-animation-name": "fadeIn","-webkit-animation-duration": "1s","-webkit-animation-iteration-count": "1", "-webkit-animation-delay": "0s"});
+  $('#pjax-container').html('<div id="ajax-loading" class="loading"></div>');
 })
 
 $(document).on('pjax:complete', function() {
   NProgress.done();
   NProgress.remove();
-  //$("#pjax-container").fadeIn(100);
+  $("#pjax-container").css({"-webkit-animation-name": "fadeIn","-webkit-animation-duration": "1s","-webkit-animation-iteration-count": "1", "-webkit-animation-delay": "0s"});
 })
 $(document).on('pjax:complete', function() {
     loadSmilies();
@@ -18,7 +19,11 @@ $(document).on('pjax:complete', function() {
     loadlike();
     closetoc();
     googleanalytics();
+    tochl();
     //pjax加载完成之后调用重载函数
+});
+$(document).ready(function(){
+    $('.loading').css({'display':'none'});
 });
 
 $(function(){
@@ -95,13 +100,52 @@ function loadTOC(){
                 }else{
                      contentH=contentH;
                 }
-                var markid="mark-"+tagName+"-"+index.toString();
+                var markid=index.toString();
                 $(this).attr("id",markid);//为当前h标签设置id
+                $(this).attr("class","post-content-subtitle");
                 $("#post-category").append("<li ><a href='#"+markid+"' style='font-size:14px;display:block;' >"+"  "+contentH+"</a>"+"</li>");//在目标DIV中添加内容   
             }  
         });
 }
 
+//导航目录高亮
+function tochl(){
+  // $sections incleudes all of the container divs that relate to menu items.
+  var $sections = $('.post-content-subtitle');
+  
+  // The user scrolls
+  $(window).scroll(function(){
+    
+    // currentScroll is the number of pixels the window has been scrolled
+    var currentScroll = $(this).scrollTop();
+    
+    // $currentSection is somewhere to place the section we must be looking at
+    var $currentSection =$(this);
+    
+    // We check the position of each of the divs compared to the windows scroll positon
+    $sections.each(function(){
+      // divPosition is the position down the page in px of the current section we are testing      
+      var divPosition = $(this).offset().top;
+      
+      // If the divPosition is less the the currentScroll position the div we are testing has moved above the window edge.
+      // the -1 is so that it includes the div 1px before the div leave the top of the window.
+      if( divPosition - 1 < currentScroll ){
+        // We have either read the section or are currently reading the section so we'll call it our current section
+        $currentSection = $(this);
+        
+        // If the next div has also been read or we are currently reading it we will overwrite this value again. This will leave us with the LAST div that passed.
+      }
+      
+      // This is the bit of code that uses the currentSection as its source of ID
+      var id = $currentSection.attr('id');
+   	 $('a').removeClass('tocactive');
+   	 $("[href=#"+id+"]").addClass('tocactive');
+      
+    })
+
+  });
+  console.clear();
+}
 $.fn.smartFloat = function() {
  var position = function(element) {
   var top = element.position().top, pos = element.css("position");
@@ -134,10 +178,15 @@ $.fn.smartFloat = function() {
 
 };
  $("#toggle").click(function() {
-            $(this).text($("#post-category").is(":hidden") ? "收起" : "展开");
-            $("#post-category").slideToggle();
-        
+    $(this).text($("#post-category").is(":hidden") ? "收起" : "展开");
+    $("#post-category").slideToggle();
  });
+  $("#info-toggle").click(function() {
+    $("#ownerinfo").slideToggle();
+ });
+ $('.userbox-head').click(function(){
+    $("#ownerinfo").slideToggle();
+ })
  
  function loadlike(){
      $(function(){
@@ -178,5 +227,5 @@ function googleanalytics(){
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-123390780-1');//把这里修改为自己的统计代码
+  gtag('config', 'UA-123390780-1');//谷歌统计，代码根据需求修改
 }

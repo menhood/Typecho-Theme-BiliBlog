@@ -11,7 +11,7 @@
                                         <?php $this->options->title(); ?>
                                     </a>
                                     <?php _e('由 <a href="http://www.typecho.org" class="a">Typecho</a> 强力驱动'); ?>. 
-                                    Theme <a href="http://menhood.wang" class="a">BiliBlog</a> 
+                                    Theme <a href="https://github.com/menhood/Typecho-Theme-BiliBlog/" class="a">BiliBlog</a> 
                                     <br>
                                     <a href="<?php $this->options->feedUrl(); ?>" target="_blank" class="a">文章RSS</a> <!-- 文章的RSS地址连接 -->|
                                     <a href="<?php $this->options->commentsFeedUrl(); ?>" target="_blank" class="a">评论RSS</a>. <!-- 评论的RSS地址连接 -->
@@ -43,6 +43,7 @@
         }, 2000);
     }
 });
+        
         </script>
     </body>
 

@@ -12,7 +12,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 
  ?>
-<?php if (!is_pjax()):?>
 <?php  $this->need('header.php');?>
 
 
@@ -21,22 +20,22 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <div class="col-md-12 column">
                     <!--侧栏-->
                     <div class="row clearfix">
-                        <div class="col-md-3 column">
+                        <div class="col-md-3 column" style="padding:0">
                             <!--侧栏1-->
                             <div class="row clearfix">
                                 <div class="col-md-12 column">
                                     <div class="userbox">
-                                        <div class="userbox-pic" style="background-image: url(&quot;<?php  ($this->options->userboxpic()) ?>" alt="https://i.loli.net/2018/10/19/5bc945e7ef153.png"></div> <a class="userbox-name a">Menhood</a>
+                                        <div class="userbox-pic" style="background-image: url(&quot;<?php  ($this->options->userboxpic()) ?>" alt="https://i.loli.net/2018/10/19/5bc945e7ef153.png"></div> <a class="userbox-name a" id="info-toggle">Menhood</a>
 
                                         <div class="userbox-bottom">
                                             <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
-                                            <a class="postnum-a a" href="<?php $this->options->siteUrl(); ?>index.php/timeline.html">
+                                            <a class="postnum-a a" href="<?php $this->options->siteUrl(); ?>index.php/timeline.html"><!--此处可自定义页面，这是开启了静态化后新建了一个名为timeline的页面-->
                                                 <p class="postnum-p" style="padding-top: 35px;">
                                                     <?php $stat->publishedPostsNum() ?>篇
                                                 </p>
                                                 <p class="postnum-p-text">文章</p>
                                             </a>
-                                            <a class="comnum-a a">
+                                            <a class="comnum-a a" href="index.php/about.html#comments">
                                                 <p class="comnum-p" style="padding-top: 35px;">
                                                 <?php $stat->publishedCommentsNum() ?>条
                                                 </p>
@@ -48,10 +47,63 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 </div>
                             </div>
                             <!--侧栏2-->
+                            <div class="row clearfix" style="display:none" id="ownerinfo">
+                                <div class="col-md-12 column">
+                                    <div class="card">
+                                        <p class="card-title">信息</p>
+                                        <div class="card-more"> <a href="https://m.mdh.red" target="_blank" class="a">¡</a></div>
+                                        <div class="card-content">
+                                            <ul><!--图标自定义替换img中src的值即可，不过图标要自己做，大小32*32-->
+                                                <li>
+                                                    <img src="https://i.loli.net/2018/10/26/5bd270b485abb.png" style="width:auto;height:14px">
+                                                    <a href="<?php $this->options->bilibiliindex(); ?> " target="_blank">Bilibili Space</a>
+                                                </li>
+                                                <li>
+                                                    <img src="https://i.loli.net/2018/10/30/5bd80a13e9b4f.png" style="width:auto;height:14px">
+                                                    <a href="<?php $this->options->musicindex(); ?>" target="_blank">Netease Music</a>
+                                                </li>
+                                                <li>
+                                                    <img src="https://blog.menhood.wang/home.png" style="width:auto;height:14px">
+                                                    <a href="https://www.menhood.wang" target="_blank">Menhood Nav</a>
+                                                </li>
+                                                <li>
+                                                    <img src="https://i.loli.net/2018/10/30/5bd80b469ddac.png" style="width:auto;height:14px">
+                                                    <a href="https://api.menhood.wang" target="_blank">Menhood API</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--侧栏3-->
                             <div class="row clearfix">
                                 <div class="col-md-12 column">
                                     <div class="card">
-                                        <p class="card-title">标签云</p>
+                                        <p class="card-title">音乐</p>
+                                        <div class="card-more"> <a href="<?php $this->options->musicindex(); ?>"  target="_blank" class="a">♫</a>
+                                        
+                                        </div>
+                                        <div class="card-content" style="padding:0;">
+                                            <div id="aplayer">
+                                            <!-- MetingJS start -->
+                                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+                                            <div class="aplayer" data-id="<?php $this->options->apid(); ?>" data-server="netease" data-type="playlist" data-autoplay="false" data-volume="0.5" data-order="random" id="card-ap">加载中……</div>
+                                            <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+                                            <script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
+                                            <script>
+                                            var meting_api='https://api.fczbl.vip/163/?server=netease&type=playlist&id=100845969';
+                                            </script>
+                                            <!-- MetingJS end -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--侧栏4-->
+                            <div class="row clearfix">
+                                <div class="col-md-12 column">
+                                    <div class="card">
+                                        <p class="card-title">标签</p>
                                         <div class="card-more"> <a href="#modal-container-642507" role="button" data-toggle="modal" class="a">ooo</a>
                                         
                                         </div>
@@ -67,6 +119,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                         <!--中间部分-->
                         <div class="col-md-6 column" id="pjax-container">
@@ -121,7 +174,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                                        <span class="comnum-text-bar">
                                                            <a href="<?php $this->permalink() ?>#comments" class="a">
                                                            <i class="comment-ico"></i>
-                                                           <span  class="text-offset"><?php $this->commentsNum('%d Comments'); ?></span>
+                                                           <span  class="text-offset"><?php $this->commentsNum('%d'); ?></span>
                                                            </a>
                                                         </span>
                                                    </div>
@@ -145,7 +198,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                             </div>
                         </div>
                                 <!--右侧栏-->
-                                <div class="col-md-3 column">
+                                <div class="col-md-3 column" style="padding:0">
                                     <!--右侧栏1-->
                                     <div class="row clearfix">
                                         <div class="col-md-12 column">
@@ -170,7 +223,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                         <div class="col-md-12 column">
                                             <div class="card">
                                                 <p class="card-title">最近评论</p>
-                                                <div class="card-more"> <a href="/" target="_blank" class="card-more-a a">...</a>
+                                                <div class="card-more"> <a href="<?php $this->options->siteUrl(); ?>index.php/about.html" target="_blank" class="card-more-a a">...</a>
 
                                                 </div>
                                                 <div class="card-content" id="zjpl"> 
@@ -181,7 +234,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                         </div>
                                     </div>
                                     <!--右侧栏3-->
-                                    <div class="row clearfix" id="smartFloat">
+                                    <div class="row clearfix" id="smartFloat" style="display:none;">
                                         <div class="col-md-12 column">
                                             <div class="card">
                                                 <p class="card-title">目录&nbsp;<a href="javascript:void(0);" id="closetoc">自闭</a></p>
@@ -198,4 +251,3 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 </div><!-- end #main-->
 
 <?php $this->need('footer.php'); ?>
-<?php endif;?>

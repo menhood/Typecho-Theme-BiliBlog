@@ -124,11 +124,11 @@
                     <form method="post" action="<?php $this->commentUrl() ?>">
                         <div class="col-md-2 column">
                             <img src="<?php if ($this->remember('mail',true)): ?><?php _e('https://gravatar.loli.net/avatar/'.md5($this->remember('mail',true)))?><?php else :_e('https://i.loli.net/2018/10/28/5bd55579d2d72.png')?><?php endif;
-                            ?>" style="float: right;margin: 24px 10px 0 5px;position: relative;width: 48px;height: 48px;border-radius: 50%;">
+                            ?>" style="float: right;position: relative;width: 48px;height: 48px;border-radius: 50%;">
                         </div>
                         <div class="col-md-10 column">
                             <div class="row clearfix">
-                                <div class="col-md-3 column">
+                                <div class="col-md-3 column" style="padding:1px;">
                                     <div class="bs-example bs-example-form" role="form">
                                         <div class="input-group">
                                             <span class="input-group-addon"><?php _e('称呼');
@@ -139,7 +139,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-3 column">
+                                <div class="col-md-3 column" style="padding:1px;">
                                     <div class="bs-example bs-example-form" role="form">
                                         <div class="input-group">
                                             <span class="input-group-addon<?php if ($this->options->commentsRequireMail): ?> required<?php endif;
@@ -151,7 +151,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3 column">
+                                <div class="col-md-3 column" style="padding:1px;">
                                     <div class="bs-example bs-example-form" role="form">
                                         <div class="input-group">
                                             <span class="input-group-addon"<?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif;
@@ -172,7 +172,7 @@
                                 <?php endif;
                                 ?>
                                 <div class="row clearfix">
-                                    <div class="col-md-9 column">
+                                    <div class="col-md-9 column" style="padding-left:8px">
                                         <textarea rows="8" cols="50" name="text" id="textarea" class="textarea" required><?php $this->remember('text');
                                             ?></textarea>
                                     </div>

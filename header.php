@@ -2,10 +2,12 @@
 <!DOCTYPE HTML>
 <html class="no-js">
 <head>
+    <meta name="Description" content="<?php  ($this->options->Description()) ?>">
+    <meta name="Keywords" content="<?php  ($this->options->Keywords()) ?>">
     <meta charset="<?php $this->options->charset(); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="format-detection" content="telephone=no" />
     <link id="tabico" rel="icon" href="<?php $this->options->favicon(); ?>" />
@@ -25,6 +27,9 @@
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
         <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.loli.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+        <link href="https://cdnjs.loli.net/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+        <script src="https://cdnjs.loli.net/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.loli.net/ajax/libs/dplayer/1.22.2/DPlayer.min.js"></script>
         <link href="https://unpkg.com/nprogress@0.2.0/nprogress.css" rel="stylesheet">
         <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
         
@@ -98,7 +103,7 @@
                             </ul>
 						</div>
 						<div class="modal-footer" style="border-top: 0px solid #e5e5e5; "> 
-							 <button type="button" class="btn btn-primary" onclick="ssub()">搜索</button>
+							 <button type="button" class="search-btn" onclick="ssub()">搜索</button>
 							 <script>function ssub(){document.getElementById("search").submit();}</script>
 						</div>
 					</div>
@@ -111,3 +116,4 @@
             </div>
             <!--导航结束-->
             <?php endif;?>
+            

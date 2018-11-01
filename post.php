@@ -4,18 +4,18 @@
 <?php endif;?>
 
 <!--中间部分-->
-                        <!--<div class="col-md-6 column" id="pjax-container">-->
                         <script>
                             $(document).attr("title","<?php $this->title()?>");
                             $('#post-category').html("<!-- index-menu -->");
+                            $('#smartFloat').show();
                         </script>
                             <!--面包屑导航-->
                             <div class="row clearfix">
                                 <div class="col-md-12 column" style="margin-bottom: -32px;margin-top: 8px;">
                                     <div class="breadcrumb">
-                                        当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">Home</a> &raquo;</li>
+                                        当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">主页</a> &raquo;</li>
 	                                    <?php if ($this->is('index')): ?><!-- 页面为首页时 -->
-		                                Latest Post
+		                                最新文章
 	                                    <?php elseif ($this->is('post')): ?><!-- 页面为文章单页时 -->
 		                                <?php $this->category(); ?> &raquo; <?php $this->title() ?>
 	                                    <?php else: ?><!-- 页面为其他页时 -->
@@ -27,8 +27,8 @@
                             <!--文章主体-->
                             <div class="row clearfix" >
                                 <div class="col-md-12 column">
-                                    <article class="post" style="background-color:#fff;border-radius:8px;">
-                                                <div class="post-head blur" style="background-image: url(<?php $this->fields->thumb(); ?>);width:100%;height:auto;">
+                                    <article class="post" style="background-color:#fff;border-radius:8px;box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.09);">
+                                                <div class="post-head blur" style="background-image: url(<?php $this->fields->thumb(); ?>);background-position-x:center;background-position-y:center;width:100%;height:100px;">
                                                 </div>
                                                 <h1 class="post-title" href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h1>
                                               <ul class="post-meta">
@@ -61,7 +61,21 @@
                                         <ul class="post-near">
                                         <li>上一篇: <?php $this->thePrev('%s','没啦'); ?></li>
                                         <li>下一篇: <?php $this->theNext('%s','没啦'); ?></li>
-                                        </ul>    
+                                        </ul>
+                                        <!--灯箱脚本-->
+                                        <script>
+                                        var imgs=$(".post-content img:not(.smilies)");
+                                        for(i=0;i<imgs.length;i++){
+                                            var imgs=$(".post-content img:not(.smilies)");
+                                            imgs[i].outerHTML= '<a href="' + imgs[i].src +' "data-fancybox="images" data-caption="' + imgs[i].alt + '" >' + imgs[i].outerHTML + '<\/a>';
+                                        };
+                                        function loadfancybox(){
+                                        $('[data-fancybox="images"]').fancybox({
+    	                                    
+                                        });
+                                        }
+                                        loadfancybox();
+                                        </script>
                                 </div>
                             </div>
                         </div>

@@ -20,7 +20,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                             <div class="row clearfix">
                                 <div class="col-md-12 column" style="margin-bottom: -32px;margin-top: 8px;">
                                     <div class="breadcrumb">
-                                        当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">Home</a> &raquo;</li>
+                                        当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">主页</a> &raquo;</li>
 	                                    <?php if ($this->is('index')): ?><!-- 页面为首页时 -->
 		                                Latest Post
 	                                    <?php elseif ($this->is('post')): ?><!-- 页面为文章单页时 -->

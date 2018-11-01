@@ -1,3 +1,19 @@
+/*覆盖样式
+@media (min-width: 992px){
+    .col-md-3 {
+    width: 20%!important;
+    }
+    .col-md-6 {
+    width: 60%!important;
+    }
+}*/
+.icon-bar{
+        border: solid 1px #00a1d6!important;
+}
+.fancybox-content{
+    border-radius: 8px;
+}
+/*页面样式*/
 #body{
     font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
     color: black;
@@ -27,7 +43,23 @@ background: #00a1d6;
 ::-webkit-scrollbar-thumb:window-inactive {
 background: #00a1d6;
 }
-
+@-webkit-keyframes fadeIn {
+0% {
+opacity: 0; /*初始状态 透明度为0*/
+}
+50% {
+opacity: 0; /*中间状态 透明度为0*/
+}
+100% {
+opacity: 1; /*结尾状态 透明度为1*/
+}
+}
+.loading{
+    left: 50%;
+    width: 94px;
+    height: 82px;
+    background-image: url(https://i.loli.net/2018/10/30/5bd8193caea80.gif);
+}
 .a{
     color: #99a2aa;
     cursor: pointer;
@@ -63,8 +95,8 @@ background: #00a1d6;
     text-decoration: none;
 }
 .logo img{
-    width: 32px;
-    height: 32px;
+    max-width: 32px;
+    max-height: 32px;
     padding: 8px;
     margin-top:-5px;
 }
@@ -142,6 +174,20 @@ background: #00a1d6;
 }
 .search a:focus{color:#00a1d6;}
 .search a:hover{color:#00a1d6;text-decoration: none;}
+.search-btn{
+    border-radius: 6px;
+    background-color: #fb7299;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 70px;
+    height: 32px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.search-btn:hover{
+    background-color: #ff94b1;
+}
 .modal-content{
     z-index: 999;
 }
@@ -186,6 +232,12 @@ background: #00a1d6;
     height: 92px;
     margin: 0 30px;
 }
+
+.breadcrumb{
+    background-color: #fff!important;
+    color: #99a2aa;
+}
+
 .postnum-a{
     width: 50%;
     height: 92px;
@@ -332,7 +384,7 @@ background: #00a1d6;
     height: 1em;
     vertical-align: middle;
     display: inline-block;
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
@@ -382,8 +434,8 @@ background: #00a1d6;
     text-decoration: none;
 }
 .abstract{
-    width: 98%;
-    height: 127px;
+    width: 95%;
+    height: 128px;
     background: #fff;
     border-radius: 4px;
     text-align: left;
@@ -415,7 +467,7 @@ background: #00a1d6;
 }
 .thumb{
     float: left;
-    width: 45%;
+    width: auto;
     height: 100%;
     position: relative;
     display: inline-block;
@@ -474,7 +526,7 @@ background: #00a1d6;
 }
 .comnum{
     display: inline-block;
-    width: 40%;
+    width: 20%;
     font-size: 12px;
     cursor: pointer;
 }
@@ -496,18 +548,18 @@ background: #00a1d6;
     height: 1em;
     vertical-align: middle;
     display: inline-block;
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
 .comment-ico:hover{
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-position: 0em -4em;
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
 .comment-ico:active{
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-position: 0em -3em;
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
@@ -526,19 +578,19 @@ background: #00a1d6;
     color: pink;
 }
 .like-ico:hover{
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-position: 0em -19.8em;
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
 .like-ico:active{
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-position: 0em -20.8em;
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
 .like-ico:visted{
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-position: 0em -21.8em;
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
@@ -555,7 +607,7 @@ background: #00a1d6;
     height: 1em;
     vertical-align: middle;
     display: inline-block;
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
@@ -645,11 +697,17 @@ background: #00a1d6;
     text-decoration: none;
     color: #fff;
 }
+
+.tocactive{
+    color: pink;
+}
 /*post页面*/
 
 .post{
     padding: 24px;
-    margin-top: 20px; 
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: rgba(0,0,0,.2) 0 0 5px 0;
 }
 
 .post-content{
@@ -659,8 +717,11 @@ background: #00a1d6;
 }
 .post-content img:not(.smilies){
     width: 100%;
+    cursor: pointer;
 }
-
+.post-content-subtitle{
+    font-size: 24px;
+}
 
 .post-head{
     height:200px;
@@ -679,6 +740,7 @@ background: #00a1d6;
     font-size: 12px;
     font-weight: 400;
     list-style-type: none;
+    margin-bottom: 50px;
 }
 .post-meta li{
     margin-right: 18px;
@@ -691,11 +753,11 @@ background: #00a1d6;
 }
 .blur {
     filter: url(blur.svg#blur); /* IE10, IE11 */
-    -webkit-filter: blur(5px); /* Chrome, Opera */
-       -moz-filter: blur(5px);
-        -ms-filter: blur(5px);   
-            filter: blur(5px);
-    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+    -webkit-filter: blur(1px); /* Chrome, Opera */
+       -moz-filter: blur(1px);
+        -ms-filter: blur(1px);   
+            filter: blur(1px);
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=1, MakeShadow=false); /* IE6~IE9 */
 }
 .post-tags{
     margin: 5px;
@@ -847,13 +909,16 @@ background: #00a1d6;
     margin-top: 8px;
     border-radius: 8px;
 }
+.comment-body .comment-parent .comment-odd>.row .clearfix>.col-md-12 .column .comment-item>.comment-children{
+    margin-left: 25px;
+}
 .comment-list{
     width: 100%;
 }
 .comment-list li{
     position: relative;
     margin-left: 5px;
-    padding: 22px 0 14px;
+    padding: 5px 0 14px;
     border-top: 1px solid #e5e9ef;
     list-style-type: none;
     width: 100%;
@@ -869,7 +934,7 @@ background: #00a1d6;
 }
 .avatar{
     float: right;
-    margin: 24px 10px 0 5px;
+    /*margin: 24px -10px 0 5px;*/
     position: relative;
     width: 48px;
     height: 48px;
@@ -915,11 +980,11 @@ background: #00a1d6;
     color: #fff;
 }
 .comment-content{
-    margin-left: 30px;
     margin-top: 10px;
 }
 .comment-content p{
     width: 80%;
+    word-wrap:break-word;
 }
 @media screen and (max-width:768px){
     .comment-content{
@@ -1001,6 +1066,9 @@ background: #00a1d6;
 }
 .required{
     
+}
+.input-group-addon{
+    padding: 0 2px!important;
 }
 .text{
     font-size: 12px;
