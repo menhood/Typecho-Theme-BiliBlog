@@ -80,7 +80,7 @@ const dp = new DPlayer({
 ### 感谢
 * [Bilibili](https://t.bilibili.com)
 * [APlayer](http://aplayer.js.org)
-* [DPlayer](http://aplayer.js.org)
+* [DPlayer](http://dplayer.js.org)
 * [MetingJS](https://github.com/metowolf/MetingJS)
 * [Baidu](https://www.baidu.com)
 * [狗子的API](https://api.fczbl.vip/)
