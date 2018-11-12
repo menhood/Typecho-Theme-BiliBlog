@@ -32,7 +32,8 @@
         <script type="text/javascript" src="https://cdnjs.loli.net/ajax/libs/dplayer/1.22.2/DPlayer.min.js"></script>
         <link href="https://unpkg.com/nprogress@0.2.0/nprogress.css" rel="stylesheet">
         <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
-        
+        <link rel="stylesheet" href="<?php $this->options->themeUrl('hljs.css'); ?>">
+        <script src="<?php $this->options->themeUrl('hl.js'); ?>"></script>
 
     <!--[if lt IE 9]>
     <script src="//cdnjscn.b0.upaiyun.com/libs/html5shiv/r29/html5.min.js"></script>
@@ -41,6 +42,7 @@
 
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
+
 </head>
 <body id="body">
 <!--[if lt IE 8]>
@@ -50,8 +52,14 @@
 <div class="container">
     <?php if (!is_pjax()):?>
             <!--导航-->
+            <div class="nav-mask">
+                <div class="navTmp">
+                    <li class="nav-li"><a href="<?php $this->options->siteUrl(); ?>">首页</a></li>
+                    <?php $this->widget('Widget_Contents_Page_List')->parse('<li class="nav-li"><a data-pjax href="{permalink}">{title}</a></li>'); ?>
+                </div>
+            </div>
             <div class="row clearfix">
-                <div class="col-md-12 column" style="padding: 0;margin: 0;height: 50px;">
+                <div class="col-md-12 column" style="padding: 0;margin: 0;height: 50px;z-index:3;">
                     <nav class="navbar " role="navigation" style="height: 50px;background-color:#fff;">
 				<div class="navbar-header">
 					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1"> 
@@ -64,7 +72,9 @@
                         <a id="logo" href="<?php $this->options->siteUrl(); ?>">
                             <?php $this->options->title(); ?>
                             <?php if ($this->options->logoUrl): ?>
-                            <img src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
+                        </a>
+                        <a href="javascript:location.reload();">
+                            <img src="<?php $this->options->logoUrl() ?>" alt="宽屏" title="点击进入宽屏模式（仅支持非首页页面）"/>
                         </a>
                         <?php endif; ?>
                         </div>
@@ -78,33 +88,30 @@
 				</div>
 				
 			
-            <div class="search"> <a id="modal-642507" href="#modal-container-642507" role="button" data-toggle="modal" class="search-a">搜索</a>
+            <div class="search"> <a id="modal-642507" href="#modal-container-642507" role="button" data-toggle="modal" class="search-a"><span class="glyphicon glyphicon-music" id="musicico"></span></a>
 			
 			<div class="modal fade" id="modal-container-642507" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
-					<div class="modal-content">
+					<div class="modal-content" style="z-index:999">
 						<div class="modal-header">
 							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							<h4 class="modal-title" id="myModalLabel">
-							搜索	
+							音乐	
 							</h4>
 						</div>
 						<div class="modal-body">
-							<form id="search"  method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
-                                    <label for="s" class="sr-only"><?php _e('搜索关键字'); ?></label>
-                                    <input type="text" id="s" name="s" class="form-control" placeholder="<?php _e('输入关键字搜索'); ?>" />
-                            </form>
-                            <!--标签云-->
-                            <?php $this->widget('Widget_Metas_Tag_Cloud', 'ignoreZeroCount=1&limit=30')->to($tags); ?>
-                            <ul class="tags-list">
-                            <?php while($tags->next()): ?>
-                            <li><a style="color: rgb(<?php echo(rand(0, 255)); ?>, <?php echo(rand(0,255)); ?>, <?php echo(rand(0, 255)); ?>)" href="<?php $tags->permalink(); ?>" title='<?php $tags->name(); ?>'>#<?php $tags->name(); ?>#</a></li>
-                            <?php endwhile; ?>
-                            </ul>
-						</div>
-						<div class="modal-footer" style="border-top: 0px solid #e5e5e5; "> 
-							 <button type="button" class="search-btn" onclick="ssub()">搜索</button>
-							 <script>function ssub(){document.getElementById("search").submit();}</script>
+						    <div id="aplayer">
+                                            <!-- MetingJS start -->
+                                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+                                            <div class="aplayer" data-id="<?php $this->options->apid(); ?>" data-server="netease" data-type="playlist" data-autoplay="false" data-volume="0.5" data-order="random" id="card-ap">加载中……</div>
+                                            <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+                                            <script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
+                                            <script>
+                                            var meting_api='https://api.fczbl.vip/163/?server=netease&type=playlist&id=100845969';
+                                            </script>
+                                            <!-- MetingJS end -->
+                                            </div>
+							
 						</div>
 					</div>
 				</div>

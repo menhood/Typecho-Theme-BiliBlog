@@ -16,34 +16,21 @@ function themeConfig($form) {
     $form->addInput($userboxpic);
     $form->addInput($userboxhead);
     $form->addInput($favicon);
-    
+    $form->addInput($bilibiliindex);
     $form->addInput($musicindex);
     $form->addInput($apid);
     $form->addInput($Description);
     $form->addInput($Keywords);
-    
-    $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock', 
-    array('ShowRecentPosts' => _t('显示最新文章'),
-    'ShowRecentComments' => _t('显示最近回复')),
-    array('ShowRecentPosts', 'ShowRecentComments', 'ShowCategory', 'ShowArchive', 'ShowOther'), _t('侧边栏显示'));
-    
-    $form->addInput($sidebarBlock->multiMode());
 }
 
 
-/*
-function themeFields($layout) {
-    $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点LOGO地址'), _t('在这里填入一个图片URL地址, 以在网站标题前加上一个LOGO'));
-    $layout->addItem($logoUrl);
-}
-*/
 function themeInit($archive)
 {
  Helper::options()->commentsAntiSpam = false;
- Helper::options()->commentsMaxNestingLevels = 3;
+ Helper::options()->commentsMaxNestingLevels = 3;//评论嵌套最大层数，建议不变
 }
 
 function is_pjax()
 {
-    return (isset($_SERVER['HTTP_X_PJAX']) && $_SERVER['HTTP_X_PJAX'] == 'true');
+    return (isset($_SERVER['HTTP_X_PJAX']) && $_SERVER['HTTP_X_PJAX'] == 'true');//pjax请求判断
 }

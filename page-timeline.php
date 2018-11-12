@@ -17,7 +17,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;?>
                         </script>                        
                             <!--面包屑导航-->
                             <div class="row clearfix">
-                                <div class="col-md-12 column" style="margin-bottom: -32px;margin-top: 8px;">
+                                <div class="col-md-12 column" style="margin-bottom: -32px;">
                                     <div class="breadcrumb">
                                         当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">主页</a> &raquo;</li>
 	                                    <?php if ($this->is('index')): ?><!-- 页面为首页时 -->
@@ -49,7 +49,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;?>
         if ($year != $year_tmp || $mon != $mon_tmp) {
 			 $year = $year_tmp;
 			 $mon = $mon_tmp;
-			 $output .= '<div class="categorys-title">'.date('M Y',$archives->created).'</div><div class="post-lists"><div class="post-lists-body">';
+			 $output .= '<div class="categorys-title"><strong style="color:#00a1d6">[ </strong>'.date('M Y',$archives->created).'<strong style="color:#00a1d6"> ] </strong></div><div class="post-lists"><div class="post-lists-body">';
         }
         $output .= '<div class="post-list-item"><div class="post-list-item-container"><div class="item-label"><div class="item-title"><a href="'.$archives->permalink .'">'. $archives->title .'</a></div><div class="item-meta clearfix"><div class="item-meta-date"> '.date('M j, Y',$archives->created).' </div></div></div></div></div>';
     }

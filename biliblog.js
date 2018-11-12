@@ -1,18 +1,32 @@
 $(document).pjax('a[target!=_blank]', '#pjax-container');
+$.pjax.defaults.timeout = 2000;
+$(window).scroll(function () {
+  //小屏幕下的导航条折叠
+  if ($(window).width() < 768) {
+    //点击导航链接之后，把导航选项折叠起来
+    $(".navbar-toggle").click(function () {
+      $("#navbar-collapse-1").collapse('hide');
+    });
+    //滚动屏幕时，把导航选项折叠起来
+    $(window).scroll(function () {
+      $("#navbar-collapse-1").collapse('hide');
+    });
+  }
+});
 $(document).on('pjax:send', function() {
   NProgress.start();
-})
-$(document).on('pjax:start', function() {
-  $("#pjax-container").css({"-webkit-animation-name": "fadeIn","-webkit-animation-duration": "1s","-webkit-animation-iteration-count": "1", "-webkit-animation-delay": "0s"});
-  $('#pjax-container').html('<div id="ajax-loading" class="loading"></div>');
+  $("#pjax-container").addClass('fadeOut');
+  $("#pjax-container").html('<div class="loading" > <img src="https://i.loli.net/2018/10/30/5bd8193caea80.gif" /></div>');
+  $('#smartFloat').css({'display':'none'});
 })
 
 $(document).on('pjax:complete', function() {
-  NProgress.done();
-  NProgress.remove();
-  $("#pjax-container").css({"-webkit-animation-name": "fadeIn","-webkit-animation-duration": "1s","-webkit-animation-iteration-count": "1", "-webkit-animation-delay": "0s"});
+    $("#pjax-container").removeClass('fadeOut');
+    $("#pjax-container").addClass('fadeIn');
 })
 $(document).on('pjax:complete', function() {
+    NProgress.done();
+    NProgress.remove();
     loadSmilies();
     loadTOC();
     $("#smartFloat").smartFloat();
@@ -20,10 +34,15 @@ $(document).on('pjax:complete', function() {
     closetoc();
     googleanalytics();
     tochl();
+    loadhljs();
+    loadbdtj();
     //pjax加载完成之后调用重载函数
 });
 $(document).ready(function(){
     $('.loading').css({'display':'none'});
+    if($(document).width()<775){
+    $('#navbar-collapse-1').collapse("hide");
+    }
 });
 
 $(function(){
@@ -155,9 +174,8 @@ $.fn.smartFloat = function() {
     if (window.XMLHttpRequest) {
      element.css({
       position: "fixed",
-      top: 0 ,
-      width:"262px",
-      right: "6%"
+      top: 50 ,
+      width:"240px"
      }); 
     } else {
      element.css({
@@ -227,5 +245,36 @@ function googleanalytics(){
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-123390780-1');//谷歌统计，代码根据需求修改
+  gtag('config', 'UA-123390780-1');
+}
+//下滑显示导航
+$(function(){
+
+var nav=$(".nav-mask"); //得到导航对象
+
+var win=$(window); //得到窗口对象
+
+var sc=$(document);//得到document文档对象。
+
+win.scroll(function(){
+
+  if(sc.scrollTop()>=50){
+
+    nav.addClass("fixednav"); 
+
+   $(".navTmp").fadeIn(); 
+
+  }else{
+
+   nav.removeClass("fixednav");
+
+   $(".navTmp").fadeOut();
+
+  }
+
+})})  
+
+function loadhljs(){
+    hljs.initHighlighting();
+    hljs.initHighlightingOnLoad();
 }

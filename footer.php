@@ -4,7 +4,7 @@
 
 <!--底部footer-->
                             <div class="row clearfix">
-                                <div class="col-md-12 column">
+                                <div class="col-xs-12 col-md-12 col-lg-12 column">
                                     <div class="footer text-center">
                                     <a href="<?php $this->options->adminUrl('login.php'); ?>" class="a">&copy;</a>2015-<?php echo date('Y'); ?> 
                                     <a href="<?php $this->options->siteUrl(); ?>" class="a">
@@ -24,7 +24,6 @@
 <?php $this->footer(); ?>
 
         <script type="text/javascript" data-no-instant="true" src="/usr/themes/biliblog/biliblog.js"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123390780-1"></script>
         <script>
         var OriginTitile = document.title;
         var titleTime;
@@ -43,6 +42,18 @@
         }, 2000);
     }
 });
+        
+        $(document).on('aplayers:playing', function () {
+        console.log('playing');
+        $("#musicico").addClass("xuanzhuan");
+        });
+        $(document).on('aplayers:pause', function () {
+        console.log('pause');
+        $("#musicico").removeClass("xuanzhuan");
+        });
+        
+        
+        
         
         </script>
     </body>

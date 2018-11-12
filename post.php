@@ -7,11 +7,18 @@
                         <script>
                             $(document).attr("title","<?php $this->title()?>");
                             $('#post-category').html("<!-- index-menu -->");
-                            $('#smartFloat').show();
+                            if($(document).width()<800){
+                            $('#smartFloat').css({'display':'none'});
+                            $('#navbar-collapse-1').removeClass("collapse");
+                            $('#ownerinfo').hide();
+                            }else{
+                                $('#smartFloat').show();
+                            };
+                            
                         </script>
                             <!--面包屑导航-->
                             <div class="row clearfix">
-                                <div class="col-md-12 column" style="margin-bottom: -32px;margin-top: 8px;">
+                                <div class="col-md-12 column" style="margin-bottom: -32px;">
                                     <div class="breadcrumb">
                                         当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">主页</a> &raquo;</li>
 	                                    <?php if ($this->is('index')): ?><!-- 页面为首页时 -->
@@ -62,7 +69,6 @@
                                         <li>上一篇: <?php $this->thePrev('%s','没啦'); ?></li>
                                         <li>下一篇: <?php $this->theNext('%s','没啦'); ?></li>
                                         </ul>
-                                        <!--灯箱脚本-->
                                         <script>
                                         var imgs=$(".post-content img:not(.smilies)");
                                         for(i=0;i<imgs.length;i++){
