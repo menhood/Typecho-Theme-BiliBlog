@@ -475,7 +475,7 @@ a:-webkit-any-link{cursor:url('OW-Hand.cur'),auto!important;}
     height: 1em;
     vertical-align: middle;
     display: inline-block;
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
@@ -639,18 +639,18 @@ a:-webkit-any-link{cursor:url('OW-Hand.cur'),auto!important;}
     height: 1em;
     vertical-align: middle;
     display: inline-block;
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
 .comment-ico:hover{
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-position: 0em -4em;
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
 .comment-ico:active{
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-position: 0em -3em;
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
@@ -669,19 +669,19 @@ a:-webkit-any-link{cursor:url('OW-Hand.cur'),auto!important;}
     color: pink;
 }
 .like-ico:hover{
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-position: 0em -19.8em;
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
 .like-ico:active{
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-position: 0em -20.8em;
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
 .like-ico:visted{
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-position: 0em -21.8em;
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
@@ -698,7 +698,7 @@ a:-webkit-any-link{cursor:url('OW-Hand.cur'),auto!important;}
     height: 1em;
     vertical-align: middle;
     display: inline-block;
-    background-image: url(https://cdn.menhood.wang/theme/biliblog/bp-svg-icon.svg);
+    background-image: url(https://cdn.jsdelivr.net/gh/menhood/Typecho-Theme-BiliBlog@latest/bp-svg-icon.svg);
     background-repeat: no-repeat;
     background-size: 1em 22.8em;
 }
