@@ -6,7 +6,7 @@
 
 ![](https://i.loli.net/2019/01/03/5c2d6ecfd0dd3.jpg)
 
-> 在线示例：https://blog.menhood.wang/
+> 在线示例：http://biliblog.menhood.wang
 
 ## BiliBlog食用指南
 
