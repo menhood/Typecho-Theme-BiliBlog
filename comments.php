@@ -22,14 +22,13 @@
         <div class="row clearfix">
             <div class="col-md-12 column comment-item" id="<?php $comments->theId();?>" style="padding-left: ;">
                 <div class="row clearfix" >
-                    <div class="col-md-2 column" style="margin-top:8px" >
+                    <div class="col-md-2 column" style="margin-top:16px" >
                         <?php $comments->gravatar('40', 'https://i.loli.net/2018/10/28/5bd55579d2d72.png');?>
                     </div>
                     <div class="col-md-10 column">
                         <div class="row clearfix">
                             <div class="col-md-12 column ">
-                                <span class="fn" style="<?php if ($depth == 1){echo 'border-top: 1px solid #e5e9ef;';}?>">
-                                    <?php $comments->author();?>
+                                <span class="fn" style="<?php if ($depth == 1){echo 'border-top: 1px solid #e5e9ef;padding-top:8px;';}?>">
                                     <?php if ($comments->authorId) {
                                         if ($comments->authorId == $comments->ownerId) {
                                             echo "<span class='author-after-text'>UP</span>";
@@ -38,8 +37,9 @@
                                         <?php
                                     }
                                     ?>
+                                    <?php $comments->author();?>
                                 </span>
-
+                                    
                             </div>
                         </div>
                         <div class="row clearfix">
@@ -119,8 +119,8 @@
                 <?php else : ?>
 
                 <div class="row clearfix">
-                    <form method="post" action="<?php $this->commentUrl() ?>">
-                        <div class="col-md-2 column">
+                    <form method="post" action="<?php $this->commentUrl() ?>" id="add-comment" >
+                        <div class="col-md-2 column" style="padding-top: 40px;">
                             <img src="<?php if ($this->remember('mail',true)): ?><?php _e('https://gravatar.loli.net/avatar/'.md5($this->remember('mail',true)))?><?php else :_e('https://i.loli.net/2018/10/28/5bd55579d2d72.png')?><?php endif;
                             ?>" id="chead" style="float: right;position: relative;width: 48px;height: 48px;border-radius: 50%;margin-left: 8px;">
                         </div>
@@ -183,9 +183,24 @@
                                     </div>
                                 </div>
                                 <div class="row clearfix">
-                                    <div class="col-md-1 column">
-                                        <?php Smilies_Plugin::output();
-                                        ?>
+                                    <div class="col-md-12 column">
+                                        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowOwO', $this->options->sidebarBlock) && !$this->is('index')): ?>
+                                        	
+                                        	<div id="OwO" class="OwO"></div>
+    										<script src="<?php $this->options->themeUrl('/OwO/OwO.min.js'); ?>"></script>
+											<script>
+												var OwO_json = "<?php $this->options->themeUrl('/OwO/OwO.json'); ?>";
+												var OwO_1 = new OwO({
+    											logo: '颜文字',
+    											container: document.getElementById('OwO'),
+    											target: document.getElementById('textarea'),
+    											api: OwO_json,
+    											position: 'down',
+    											width: '100%',
+    											maxHeight: '250px'
+    											});
+    										</script>
+                                        <?php endif;?>	
                                     </div>
                                 </div>
                             </div>

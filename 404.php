@@ -71,7 +71,7 @@
       
     <span class="face">:(</span>  
     <p>您访问的页面没有找到。<br>  
-        <span id="mes"></span> 秒后转回<a href="https://blog.menhood.wang">我的个人博客</a>，您可以尝试继续搜索您所需要的信息。<br>  
+        <span id="mes"></span> 秒后转回<a href="/">首页 </a>，您可以尝试继续搜索您所需要的信息。<br>  
         <span class="tips">如果您想了解更多信息，则可以联系站长: 比如留言……</span>  
     </p>  
 </body>  

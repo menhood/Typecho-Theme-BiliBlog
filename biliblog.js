@@ -1,5 +1,18 @@
 $(document).pjax('a[target!=_blank]', '#pjax-container');
 $.pjax.defaults.timeout = 2000;
+//平滑滚动
+function phgd() {  
+    var $root = $('html, body');  //选择器缓存起来。这样每次点击时就不需要再重新查找了
+    $('a').click(function() {
+        var href = $.attr(this, 'href');
+        $root.animate({
+            scrollTop: $(href).offset().top
+        }, 500, function () {
+            window.location.hash = href;
+        });
+        return false;
+    });
+};
 $(window).scroll(function () {
   //小屏幕下的导航条折叠
   if ($(window).width() < 768) {
@@ -15,13 +28,15 @@ $(window).scroll(function () {
 });
 $(document).on('pjax:send', function() {
   NProgress.start();
-  $("#pjax-container").addClass('fadeOut');
-  $("#pjax-container").html('<div class="loading" > <img src="https://i.loli.net/2018/10/30/5bd8193caea80.gif" /></div>');
+  //$("#pjax-container").addClass('fadeOut');
+  //$("#pjax-container").html('<div class="loading" > <img src="https://i.loli.net/2018/10/30/5bd8193caea80.gif" /></div>');
   $('#smartFloat').css({'display':'none'});
+  $('.loading').css({'display':'block'});
 })
 
 $(document).on('pjax:complete', function() {
-    $("#pjax-container").removeClass('fadeOut');
+    //$("#pjax-container").removeClass('fadeOut');
+    $('.loading').css({'display':'none'});
     $("#pjax-container").addClass('fadeIn');
 })
 $(document).on('pjax:complete', function() {
@@ -36,6 +51,7 @@ $(document).on('pjax:complete', function() {
     tochl();
     loadhljs();
     loadbdtj();
+    phgd();
     //pjax加载完成之后调用重载函数
 });
 $(document).ready(function(){
@@ -44,7 +60,25 @@ $(document).ready(function(){
     $('#navbar-collapse-1').collapse("hide");
     }
 });
+$(window).on('scroll', function() {
+            var wt = $(window).scrollTop(),
+                tw  = $('.nav-mask').width(),
+                dh = document.body.scrollHeight,
+                wh  = $(window).height();
+            var width = tw / (dh - wh) * wt;
+            $('.scrollgress').width(width)
+    })
+$(function() {
 
+	$('.post').scrollgress({
+		height: '50px',
+		color: '#00a1d6',
+		success: function() {
+			console.log('Scrollgress has been initiated.');
+		}
+	});
+	
+});
 $(function(){
         //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
         $(function () {
@@ -148,7 +182,7 @@ function tochl(){
       
       // If the divPosition is less the the currentScroll position the div we are testing has moved above the window edge.
       // the -1 is so that it includes the div 1px before the div leave the top of the window.
-      if( divPosition - 1 < currentScroll ){
+      if( divPosition - 150 < currentScroll ){
         // We have either read the section or are currently reading the section so we'll call it our current section
         $currentSection = $(this);
         
@@ -196,15 +230,21 @@ $.fn.smartFloat = function() {
 
 };
  $("#toggle").click(function() {
-    $(this).text($("#post-category").is(":hidden") ? "收起" : "展开");
+    //$(this).text($("#post-category").is(":hidden") ? "收起" : "展开");
     $("#post-category").slideToggle();
  });
   $("#info-toggle").click(function() {
     $("#ownerinfo").slideToggle();
+    $("#sidebar-r").slideToggle();
+    $("#Comments_Recent,#Post_Recent").slideToggle();
+    
  });
  $('.userbox-head').click(function(){
     $("#ownerinfo").slideToggle();
- })
+    $("#sidebar-r").slideToggle();
+    $("#Comments_Recent,#Post_Recent").slideToggle();
+ });
+if($(document).width()<800){$("#Comments_Recent,#Post_Recent").hide();};
  
  function loadlike(){
      $(function(){
@@ -278,3 +318,42 @@ function loadhljs(){
     hljs.initHighlighting();
     hljs.initHighlightingOnLoad();
 }
+
+function cbgcolor(){
+    var color = $('#bodybackgroundcolor').val();
+    $('#body').css({
+        'background': color
+    });
+}
+
+function closeside(e){
+    if (e == 'l'){
+        if ($('#sidebar-l').css('display') == 'none'){
+            $('#sidebar-l').css({'display': 'block'})
+            $('#pjax-container').addClass('col-md-6').removeClass('col-md-9')
+            $('#closelside').val('关闭左侧栏')
+        }else{
+            $('#pjax-container').addClass('col-md-9').removeClass('col-md-6')
+            $('#sidebar-l').css({'display': 'none'})
+            $('#closelside').val('显示左侧栏')
+        }
+    }
+    if (e == 'r'){
+        if ($('#sidebar-r').css('display') == 'none'){
+            $('#sidebar-r').css({'display': 'block'})
+            $('#pjax-container').addClass('col-md-6').removeClass('col-md-9')
+            $('#closerside').val('关闭右侧栏')
+        }else{
+            $('#sidebar-r').css({'display': 'none'})
+            $('#pjax-container').addClass('col-md-9').removeClass('col-md-6')
+            $('#closerside').val('显示右侧栏')
+        }
+    }
+}
+
+function loadaplayer(){
+    var id=$('#loadaplayer').val()
+    var code='<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="haplayer"></div><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script>$.get("https://api.fczbl.vip/163/?server=netease&type=playlist&id='+id+'",function(data){const hap = new APlayer({container: document.getElementById("haplayer"),listFolded: false,listMaxHeight: 90,lrcType: 3,audio: data});})</script>'
+    $('#metingjsplayer').html(code)
+}
+

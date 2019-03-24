@@ -17,7 +17,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;?>
                         </script>                        
                             <!--面包屑导航-->
                             <div class="row clearfix">
-                                <div class="col-md-12 column" style="margin-bottom: -32px;">
+                                <div class="<?php if (!is_pjax()):?>
+                                            col-md-8 column col-md-offset-1
+                                            <?php else:?>
+                                            col-md-12 column
+                                            <?php endif;?>" style="margin-bottom: -32px;">
                                     <div class="breadcrumb">
                                         当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">主页</a> &raquo;</li>
 	                                    <?php if ($this->is('index')): ?><!-- 页面为首页时 -->
@@ -32,7 +36,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;?>
                             </div>
                             <!--文章主体-->
                             <div class="row clearfix" >
-                                <div class="col-md-12 column" >
+                                <div class="<?php if (!is_pjax()):?>
+                                            col-md-8 column col-md-offset-1
+                                            <?php else:?>
+                                            col-md-12 column
+                                            <?php endif;?>" >
                                     <article class="post" style="background-color:#fff;border-radius:8px;margin-top: 20px;">
                                                 <?php
     $stat = Typecho_Widget::widget('Widget_Stat');

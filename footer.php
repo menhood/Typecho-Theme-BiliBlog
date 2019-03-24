@@ -3,9 +3,9 @@
 <p id="to-top"><a href="#top"><span></span></a></p>
 
 <!--底部footer-->
-                            <div class="row clearfix">
+                            <div class="">
                                 <div class="col-xs-12 col-md-12 col-lg-12 column">
-                                    <div class="footer text-center">
+                                    <div class="footer text-center " id="footer">
                                     <a href="<?php $this->options->adminUrl('login.php'); ?>" class="a">&copy;</a>2015-<?php echo date('Y'); ?> 
                                     <a href="<?php $this->options->siteUrl(); ?>" class="a">
                                         <?php $this->options->title(); ?>
@@ -16,6 +16,7 @@
                                     <a href="<?php $this->options->feedUrl(); ?>" target="_blank" class="a">文章RSS</a> <!-- 文章的RSS地址连接 -->|
                                     <a href="<?php $this->options->commentsFeedUrl(); ?>" target="_blank" class="a">评论RSS</a>. <!-- 评论的RSS地址连接 -->
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -23,10 +24,12 @@
                 </div>
 <?php $this->footer(); ?>
 
-        <script type="text/javascript" data-no-instant="true" src="/usr/themes/biliblog/biliblog.js"></script>
+        <script type="text/javascript" data-no-instant="true" src="<?php $this->options->themeUrl('biliblog.js'); ?>"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123390780-1"></script>
         <script>
         var OriginTitile = document.title;
         var titleTime;
+        <?php if (!is_pjax()):?>loadhljs();<?php endif;?>
         var OriginIco = document.getElementById("tabico").href;
         document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
@@ -42,19 +45,8 @@
         }, 2000);
     }
 });
-        
-        $(document).on('aplayers:playing', function () {
-        console.log('playing');
-        $("#musicico").addClass("xuanzhuan");
-        });
-        $(document).on('aplayers:pause', function () {
-        console.log('pause');
-        $("#musicico").removeClass("xuanzhuan");
-        });
-        
-        
-        
-        
+ 
+
         </script>
     </body>
 

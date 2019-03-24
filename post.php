@@ -3,22 +3,25 @@
 <?php $this->need('header.php'); ?>
 <?php endif;?>
 
-<!--中间部分-->
+<!--中间部分-->             
                         <script>
                             $(document).attr("title","<?php $this->title()?>");
                             $('#post-category').html("<!-- index-menu -->");
                             if($(document).width()<800){
                             $('#smartFloat').css({'display':'none'});
-                            $('#navbar-collapse-1').removeClass("collapse");
                             $('#ownerinfo').hide();
+                            $("#Comments_Recent,#Post_Recent").hide();
                             }else{
                                 $('#smartFloat').show();
                             };
-                            
                         </script>
                             <!--面包屑导航-->
                             <div class="row clearfix">
-                                <div class="col-md-12 column" style="margin-bottom: -32px;">
+                                <div class="<?php if (!is_pjax()):?>
+                                            col-md-8 column col-md-offset-1
+                                            <?php else:?>
+                                            col-md-12 column
+                                            <?php endif;?>" style="margin-bottom: -32px;">
                                     <div class="breadcrumb">
                                         当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">主页</a> &raquo;</li>
 	                                    <?php if ($this->is('index')): ?><!-- 页面为首页时 -->
@@ -33,7 +36,11 @@
                             </div>
                             <!--文章主体-->
                             <div class="row clearfix" >
-                                <div class="col-md-12 column">
+                                <div class="<?php if (!is_pjax()):?>
+                                            col-md-8 column col-md-offset-1
+                                            <?php else:?>
+                                            col-md-12 column
+                                            <?php endif;?>">
                                     <article class="post" style="background-color:#fff;border-radius:8px;box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.09);">
                                                 <div class="post-head blur" style="background-image: url(<?php $this->fields->thumb(); ?>);background-position-x:center;background-position-y:center;width:100%;height:100px;">
                                                 </div>
@@ -64,23 +71,23 @@
                                             </p>
                                             </div>
                                     </article>
-                                        <?php $this->need('comments.php'); ?>
                                         <ul class="post-near">
-                                        <li>上一篇: <?php $this->thePrev('%s','没啦'); ?></li>
-                                        <li>下一篇: <?php $this->theNext('%s','没啦'); ?></li>
+                                        <li style="min-width: 45%;text-overflow:ellipsis;">上一篇: <?php $this->thePrev('%s','没啦'); ?></li>
+                                        <li style="float: right;width: 45%;text-overflow:ellipsis;">下一篇: <?php $this->theNext('%s','没啦'); ?></li>
                                         </ul>
+                                        <?php $this->need('comments.php'); ?>
+                                        
                                         <script>
                                         var imgs=$(".post-content img:not(.smilies)");
                                         for(i=0;i<imgs.length;i++){
                                             var imgs=$(".post-content img:not(.smilies)");
-                                            imgs[i].outerHTML= '<a href="' + imgs[i].src +' "data-fancybox="images" data-caption="' + imgs[i].alt + '" >' + imgs[i].outerHTML + '<\/a>';
+                                            imgs[i].outerHTML= '<a href="' + imgs[i].src +' "data-fancybox="images" data-caption="' + imgs[i].alt + '" >' + '<div class="post-img"><img data-original="'+imgs[i].src+'" src="https://i.loli.net/2018/10/30/5bd8193caea80.gif" class="lazyload" alt="'+ imgs[i].alt +'" title="'+ imgs[i].title +'"></div>' + '<\/a>';
                                         };
-                                        function loadfancybox(){
                                         $('[data-fancybox="images"]').fancybox({
-    	                                    
+    	                                    'transitionIn': 'elastic', //窗口显示的方式 
+                                            'transitionOut': 'elastic'
                                         });
-                                        }
-                                        loadfancybox();
+                                        $("img.lazyload").lazyload({effect:'fadeIn'});
                                         </script>
                                 </div>
                             </div>

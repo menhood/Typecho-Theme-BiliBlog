@@ -20,6 +20,7 @@
 
     <!-- 使用url函数转换相关路径 -->
     <link rel="stylesheet" href="<?php $this->options->themeUrl('biliblog.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('/OwO/OwO.min.css'); ?>">
         <!-- 新 Bootstrap 核心 CSS 文件 -->
         <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -29,11 +30,13 @@
         <script src="https://cdnjs.loli.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
         <link href="https://cdnjs.loli.net/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
         <script src="https://cdnjs.loli.net/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+        <script src="https://cdnjs.loli.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.loli.net/ajax/libs/dplayer/1.22.2/DPlayer.min.js"></script>
-        <link href="https://unpkg.com/nprogress@0.2.0/nprogress.css" rel="stylesheet">
-        <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+        <link href="https://cdnjs.loli.net/ajax/libs/nprogress/0.2.0/nprogress.css" rel="stylesheet">
+        <script src="https://cdnjs.loli.net/ajax/libs/nprogress/0.2.0/nprogress.js"></script>
         <link rel="stylesheet" href="<?php $this->options->themeUrl('hljs.css'); ?>">
         <script src="<?php $this->options->themeUrl('hl.js'); ?>"></script>
+        <script src="<?php $this->options->themeUrl('scrollgress.js'); ?>"></script>
 
     <!--[if lt IE 9]>
     <script src="//cdnjscn.b0.upaiyun.com/libs/html5shiv/r29/html5.min.js"></script>
@@ -42,6 +45,31 @@
 
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
+    <meta name="baidu-site-verification" content="WIk8Uorihz" />
+    <script>
+    function loadbdtj(){
+        var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9d0d82652d72c7eac67ff1cec8e01247";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    }
+loadbdtj();
+</script>
 
 </head>
 <body id="body">
@@ -52,11 +80,13 @@
 <div class="container">
     <?php if (!is_pjax()):?>
             <!--导航-->
+            <img class="loading" src="https://i.loli.net/2018/10/30/5bd8193caea80.gif" />
             <div class="nav-mask">
                 <div class="navTmp">
                     <li class="nav-li"><a href="<?php $this->options->siteUrl(); ?>">首页</a></li>
                     <?php $this->widget('Widget_Contents_Page_List')->parse('<li class="nav-li"><a data-pjax href="{permalink}">{title}</a></li>'); ?>
                 </div>
+                <div class="scrollgress"></div>
             </div>
             <div class="row clearfix">
                 <div class="col-md-12 column" style="padding: 0;margin: 0;height: 50px;z-index:3;">
@@ -88,7 +118,7 @@
 				</div>
 				
 			
-            <div class="search"> <a id="modal-642507" href="#modal-container-642507" role="button" data-toggle="modal" class="search-a"><span class="glyphicon glyphicon-music" id="musicico"></span></a>
+            <div class="search"> <a id="modal-642507" href="#modal-container-642507" role="button" data-toggle="modal" class="search-a"><span class="glyphicon glyphicon-cog" id="ico-cog"></span></a>
 			
 			<div class="modal fade" id="modal-container-642507" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
@@ -96,22 +126,23 @@
 						<div class="modal-header">
 							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							<h4 class="modal-title" id="myModalLabel">
-							音乐	
+							页面设置 
 							</h4>
 						</div>
 						<div class="modal-body">
-						    <div id="aplayer">
-                                            <!-- MetingJS start -->
-                                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-                                            <div class="aplayer" data-id="<?php $this->options->apid(); ?>" data-server="netease" data-type="playlist" data-autoplay="false" data-volume="0.5" data-order="random" id="card-ap">加载中……</div>
-                                            <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-                                            <script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
-                                            <script>
-                                            var meting_api='https://api.fczbl.vip/163/?server=netease&type=playlist&id=100845969';
-                                            </script>
-                                            <!-- MetingJS end -->
-                                            </div>
-							
+							<div class="input-group">
+                                    <input id="bodybackgroundcolor" type="text" class="form-control" value="#d2e9fb url(//menhood.320.io/files/cdn/blogfiles/bilibilibackground.png) top/contain no-repeat">
+                                    <span class="input-group-addon btn-default" onclick="cbgcolor()">修改页面背景</span>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                    <input id="loadaplayer" type="text" class="form-control" value="<?php  ($this->options->apid()) ?>">
+                                    <span class="input-group-addon btn-default" onclick="loadaplayer()">载入歌单</span>
+                            </div>
+                            <br>
+                            <input type="button" class="btn btn-default" id="closelside" onclick="closeside('l')" value="关闭左侧栏" />
+                            <input type="button" class="btn btn-default" id="closerside" onclick="closeside('r')" value="关闭右侧栏"/>
+                            <div id="metingjsplayer"></div>
 						</div>
 					</div>
 				</div>

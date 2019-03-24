@@ -4,7 +4,7 @@
  * 
  * @package biliblog
  * @author Menhood
- * @version 1.0.2
+ * @version 1.0.3
  * @link https://blog.menhood.wang/archives/BiliBlog.html
  */
 
@@ -17,13 +17,15 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 
 <!--主体-->
-            <div class="row clearfix" style="margin-top:16px;" id="main-body">
+            <div class="main-body " style="margin-top:16px;" id="main-body">
                 <div class="col-xs-12 col-md-12 col-lg-12 column">
+                    
                     <!--侧栏-->
                     <div class="row clearfix">
+                        <?php if ($this->options->lanshu==2 || $this->options->lanshu==3):?> 
                         <div class="col-md-3 column" style="padding:0" id="sidebar-l">
                             <!--侧栏1-->
-                            <div class="row clearfix">
+                            <div class="row clearfix load-a" style="animation-delay: 0.2s;">
                                 <div class="col-md-12 col-lg-12 column">
                                     <div class="userbox">
                                         <div class="userbox-pic" style="background-image: url(&quot;<?php  ($this->options->userboxpic()) ?>" alt="https://i.loli.net/2018/10/19/5bc945e7ef153.png"></div> <a class="userbox-name a" id="info-toggle">Menhood</a>
@@ -36,7 +38,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                                 </p>
                                                 <p class="postnum-p-text">文章</p>
                                             </a>
-                                            <a class="comnum-a a" href="index.php/about.html#comments">
+                                            <a class="comnum-a a" href="<?php $this->options->siteUrl(); ?>index.php/about.html#comments">
                                                 <p class="comnum-p" style="padding-top: 35px;">
                                                 <?php $stat->publishedCommentsNum() ?>条
                                                 </p>
@@ -48,29 +50,37 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 </div>
                             </div>
                             <!--侧栏2-->
-                            <div class="row clearfix"  id="ownerinfo">
+                            <div class="row clearfix load-a" style="animation-delay: 0.4s;" id="ownerinfo">
                                 <div class="col-xs-12 col-md-12 col-lg-12 column">
                                     <div class="card">
                                         <p class="card-title">信息</p>
                                         <div class="card-more"> <a href="https://m.mdh.red" target="_blank" class="a">¡</a></div>
                                         <div class="card-content">
                                             <ul style="padding: 0;">
+                                                <a href="<?php $this->options->bilibiliindex(); ?> " target="_blank">
                                                 <li>
                                                     <img src="https://i.loli.net/2018/10/26/5bd270b485abb.png" style="width:auto;height:32px">
-                                                    <a href="<?php $this->options->bilibiliindex(); ?> " target="_blank">Bilibili Space</a>
+                                                    Bilibili Space
                                                 </li>
+                                                </a>
+                                                <a href="<?php $this->options->musicindex(); ?>" target="_blank">
                                                 <li>
                                                     <img src="https://i.loli.net/2018/10/30/5bd80a13e9b4f.png" style="width:auto;height:32px">
-                                                    <a href="<?php $this->options->musicindex(); ?>" target="_blank">Netease Music</a>
+                                                    Netease Music
                                                 </li>
+                                                </a>
+                                                <a href="https://www.menhood.wang" target="_blank">
                                                 <li>
                                                     <img src="https://blog.menhood.wang/home.png" style="width:auto;height:32px">
-                                                    <a href="https://www.menhood.wang" target="_blank">Menhood Nav</a>
+                                                    Menhood Nav
                                                 </li>
+                                                </a>
+                                                <a href="https://api.menhood.wang" target="_blank">
                                                 <li>
                                                     <img src="https://i.loli.net/2018/10/30/5bd80b469ddac.png" style="width:auto;height:32px">
-                                                    <a href="https://api.menhood.wang" target="_blank">Menhood API</a>
+                                                   Menhood API
                                                 </li>
+                                                </a>
                                             </ul>
                                         </div>
                                     </div>
@@ -98,22 +108,36 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                     </div>
                                 </div>
                             </div>
-                            
+                            <?php endif;//判断单栏结束 ?>
+                            <?php if ($this->options->lanshu==2):?>
+                                <?php $this->need('sidebar.php'); ?>
+                            <?php endif;?>
                         </div>
+                        
                         <!--左侧栏TOC-->
-                                    <div class="" id="smartFloat" style="display:none;position: absolute;top:436px;min-width: 240px;max-width: 262px;max-height: 500px;">
+                        		<?php if (!empty($this->options->sidebarBlock) && in_array('ShowTOC', $this->options->sidebarBlock) && !$this->is('index')): ?>
+                        		<script>
+                        			$('#smartFloat').style.top = $('#sidebar-l').height()+75;
+                        		</script>
+                                    <div class="" id="smartFloat" style="display:none;position: absolute;min-width: 240px;max-width: 262px;max-height: 500px;">
                                             <div class="card">
-                                                <p class="card-title">目录&nbsp;<a href="javascript:void(0);" id="closetoc">自闭</a></p>
-                                                <div class="card-more"> <a href="javascript:void(0);" id="toggle" class="card-more-a a">OvO</a>
+                                                <p class="card-title">目录&nbsp;<a href="javascript:void(0);" id="closetoc">关闭</a></p>
+                                                <div class="card-more"> <input type="checkbox" checked="checked" class="al-toggle-button" id="toggle" />
                                                 </div>
                                                 <div class="card-content" id="post-category" style="overflow-y: scroll;max-height: 550px;"> </div>
                                             </div>
                                     </div>
+                                <?php endif;?>   
                         <!--中间部分-->
-                        <div class="col-md-6 column" id="pjax-container">
-                            
+                        <?php if ($this->options->lanshu==3):?>
+                        <div class="col-md-6 column" id="pjax-container" style="width: 660px!important;">
+                        <?php elseif ($this->options->lanshu==2):?>
+                        <div class="col-md-9 column" id="pjax-container">
+                        <?php elseif ($this->options->lanshu==1):?>
+                        <div class="col-md-12 column" id="pjax-container">
+                        <?php endif;?>    
                             <!--面包屑导航-->
-                            <div class="row clearfix">
+                            <div class="row clearfix load-a">
                                 <div class="col-xs-12 col-md-12 col-lg-12 column" style="margin-bottom: -20px;">
                                     <div class="breadcrumb">
                                         当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">主页</a> &raquo;</li>
@@ -128,11 +152,14 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 </div>
                             </div>
                             <!--文章主体-->
-                            <div class="row clearfix">
+                            <div class="row clearfix ">
                                 <div class="col-xs-12 col-md-12 col-lg-12 column">
+                                    
                                     <article class="index-post">
+                                        <?php $index=0; ?>
                                         <?php while($this->next()): ?>
-                                        <div class="post-card">
+                                        <?php $index++;?>
+                                        <div class="post-card load-a" style="animation-delay: <?php echo 0.2*$index; ?>s;">
                                                 <div class="userpost-head" style="background-image: url(<?php  ($this->options->userboxhead()) ?>);">
                                                 </div>
                                                 <i class="renzheng-a"></i>
@@ -150,12 +177,15 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                                     <?php $this->fields->customtext();?>
                                                 </div>
                                                 <div class="abstract">
+                                                    
                                                     <div class="types"><?php $this->category(','); ?></div>
-                                                    <div class="thumb">
-                                                        <a href="<?php $this->permalink() ?>"><img src="<?php $this->fields->thumb();?>" /></a>
+                                                    <a href="<?php $this->permalink() ?>"><div class="thumb">
+                                                        <div class="thumb-mask"></div>
+                                                        <img src="<?php if($this->fields->thumb) {$this->fields->thumb();}else{echo 'https://i.loli.net/2019/03/24/5c978fcc8ced0.jpg';}?>" />
                                                     </div>
+                                                    </a>
                                                     <div class="posttitle">
-                                                        <a href="<?php $this->permalink() ?>" class="a"><?php $this->title() ?></a>
+                                                        <a href="<?php $this->permalink() ?>" class="a"><?php $this->sticky();$this->title() ?></a>
                                                     </div>
                                                     <div class="abstracttext">
                                                         <?php $this->excerpt(30,'....'); ?>
@@ -170,6 +200,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                                            </a>
                                                         </span>
                                                    </div>
+                                                   <?php if($this->likesNum): ?>
                                                    <div class="like">
                                                        <span class="like-text-bar" >
                                                            <a class="btn-like" data-cid="<?php $this->cid();?>" data-num="<?php $this->likesNum();?>">
@@ -180,6 +211,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                                             </a>
                                                         </span>
                                                    </div>
+                                                   <?php endif; ?>
                                                </div>
                                                </div>
                                         </div>
@@ -189,44 +221,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 </div>
                             </div>
                         </div><!--pjax container end-->
-                                <!--右侧栏-->
-                                <div class="col-md-3 column" style="padding:0" id="sidebar-r">
-                                    <!--右侧栏1-->
-                                    <div class="row clearfix">
-                                        <div class="col-xs-12 col-md-12 col-lg-12 column">
-                                            <div class="card" style="margin-top:0;">
-                                                <p class="card-title">最近文章</p>
-                                                <div class="card-more"> <a href="<?php $this->options->siteUrl(); ?>index.php/timeline.html" target="_blank" class="card-more-a a">。。。</a>
-
-                                                </div>
-                                                <div class="card-content"> 
-                                                <?php $this->widget('Widget_Contents_Post_Recent')->to($post); ?>
-                                                <?php while($post->next()): ?>
-                                                <a href="<?php $post->permalink(); ?>" title="<?php $post->title(); ?>" class="a">
-                                                <li><?php $post->title(25, '…'); ?></li>
-                                                </a>
-                                                <?php endwhile; ?>   
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--右侧栏2-->
-                                    <div class="row clearfix">
-                                        <div class="col-xs-12 col-md-12 col-lg-12 column">
-                                            <div class="card">
-                                                <p class="card-title">最近评论</p>
-                                                <div class="card-more"> <a href="<?php $this->options->siteUrl(); ?>index.php/about.html" target="_blank" class="card-more-a a">...</a>
-
-                                                </div>
-                                                <div class="card-content" id="zjpl"> 
-                                                <?php $this->widget('Widget_Comments_Recent','ignoreAuthor=true')->parse('<a href="{permalink}" class="a"><li style="max-width: 280px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{text}</li></a>'); ?>
-                                                
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
+                                <?php if ($this->options->lanshu==3):?>
+                                <?php $this->need('sidebar.php'); ?>
+                                <?php endif;?>
                             </div>
 	
 
