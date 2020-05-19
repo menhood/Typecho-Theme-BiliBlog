@@ -1,221 +1,148 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
+<?php if ($this->allow('comment')): 
+    $this->comments()->to($comments);//把this内容赋给comments变量
+?>
+<div id="<?php $this->respondId();;?>" class="respond">
+
+<?php
+if ($this->user->hasLogin())://判断登录开始
+?>
+<div class="comment-send no-login">
+    <div class="user-face">
+        <img class="user-head" src="<?php $this->options->userboxhead();
+        ?>">
+    </div>
+    <div class="textarea-container">
+        <form  method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
+        <i class="ipt-arrow"></i>
+        <textarea id="comment_textarea" cols="80" name="text" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt"></textarea>
+        <button type="button"  id="comment_submit_btn" class="comment-submit">发表评论</button>
+        <button type="submit"  id="c_submit_btn" style="display:none;"></button>
+        </form>
+    </div>
+        <div id="OwO" class="OwO " style="margin:3px 0 0 86px;"></div>
+    <div class="cancel-comment-reply"><?php $comments->cancelReply('取消回复');?></div>
+</div>
+<?php endif;
+//判断登录完成 ?>
+<?php
+if (!$this->user->hasLogin())://判断访客开始
+?>
+<div class="comment-send no-login">
+    <div class="user-face">
+        <img id="user-head" class="user-head" src="https://i.loli.net/2018/10/28/5bd55579d2d72.png">
+    </div>
+    <div class="textarea-container">
+        <form  method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
+            <input type="text" name="author" id="sync_author" class="text" style="display:none;" />
+            <input type="email" name="mail" id="sync_mail" class="text" style="display:none;" />
+            <input type="url" name="url" id="sync_url" class="text" style="display:none;" />
+            <input type="hidden" name="_" value="<?php $security = $this->widget('Widget_Security');echo $security->getToken($this->request->getReferer())?>" />
+        <div class="baffle-wrap">
+            <div class="baffle">
+                请先<span id="guest_login_btn" class="b-btn btn-open-mini-Login">登录</span>后发表评论 (・ω・)
+            </div>
+        </div>
+        <i class="ipt-arrow"></i><textarea id="comment_textarea" cols="80" name="text" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt"></textarea><button id="comment_submit_btn" type="button" class="comment-submit disabled" disabled="disabled">发表评论</button>
+        <button type="submit"  id="c_submit_btn" style="display:none;"></button>
+        </form>
+    </div>
+    <div id="OwO" class="OwO " style="margin:3px 0 0 86px;"></div>
+    <div class="cancel-comment-reply"><?php $comments->cancelReply('取消回复');?></div>
+</div>
+<?php endif;
+//判断访客完成 ?>
+<link rel="stylesheet" href="<?php echo $this->options->rootUrl;?>/usr/themes/biliblog/static/css/OwO.min.css">
+<script src="<?php echo $this->options->rootUrl;?>/usr/themes/biliblog/static/js/OwO.min.js" type="text/javascript"></script>
+<script>
+    var OwO = new OwO({
+        logo: '<i class="face"></i>表情',
+        container: document.getElementById('OwO'),
+        target: document.getElementById('comment_textarea'),
+        api: "<?php echo $this->options->rootUrl;
+        ?>/usr/themes/biliblog/static/js/OwO.json",
+        position: 'up',
+        width: '100%',
+        maxHeight: '250px'
+    });
+</script>
+
+<?php else : ?>
+<h3><?php _e('评论已关闭');
+    ?></h3>
+<?php endif;
+?>
+</div>  
+<?php if ($comments->have()): ?>
+<h3><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论'));?></h3>
+
+<?php $comments->listComments();
+?>
+
+<?php $comments->pageNav(' 上一页', '下一页 ');?>
+
+<?php endif;
+?>
 <?php function threadedComments($comments, $options) {
-    $commentClass = '';
     $commentLevelClass = $comments->levels > 0 ? ' comment-child' : ' comment-parent';
-    $depth = $comments->levels +1;
-    ?>
-    <li id="li-<?php $comments->theId();
-        ?>" class="comment-body<?php
-        if ($depth > 1 && $depth < 3) {
-            echo ' comment-child';
-            $comments->levelsAlt(' comment-level-odd', ' comment-level-even');
-        } elseif ( $depth > 2 ) {
-            echo ' comment-child2';
-            $comments->levelsAlt(' comment-level-odd', ' comment-level-even');
-        } else {
-            echo ' comment-parent';
-        }
+    $depth = $comments->levels +1;//实际层数
+    $theId =  $comments->theId;
+?>
+
+<li id="li-<?php $comments->theId();?>" class="comment-body<?php
+        if ($depth == 2) {echo ' comment-child';$comments->levelsAlt(' comment-level-2', ' comment-level-even');
+        } else {echo ' comment-parent';}
         $comments->alt(' comment-odd', ' comment-even');
         echo $commentClass;
         ?>">
-        <div class="row clearfix">
-            <div class="col-md-12 column comment-item" id="<?php $comments->theId();?>" style="padding-left: ;">
-                <div class="row clearfix" >
-                    <div class="col-md-2 column" style="margin-top:16px" >
-                        <?php $comments->gravatar('40', 'https://i.loli.net/2018/10/28/5bd55579d2d72.png');?>
-                    </div>
-                    <div class="col-md-10 column">
-                        <div class="row clearfix">
-                            <div class="col-md-12 column ">
-                                <span class="fn" style="<?php if ($depth == 1){echo 'border-top: 1px solid #e5e9ef;padding-top:8px;';}?>">
-                                    <?php if ($comments->authorId) {
-                                        if ($comments->authorId == $comments->ownerId) {
-                                            echo "<span class='author-after-text'>UP</span>";
-                                        }
-                                        ?>
-                                        <?php
-                                    }
-                                    ?>
-                                    <?php $comments->author();?>
-                                </span>
-                                    
-                            </div>
-                        </div>
-                        <div class="row clearfix">
-                            <div class="col-md-12 column comment-content">
-                                <?php $comments->content();
-                                ?>
-                            </div>
-                        </div>
-                        <div class="row clearfix">
-                            <div class="col-md-12 column">
-                                <div class="comment-meta">
-                                    <a href="<?php $comments->permalink();?>">
-                                        <span class="comment-fnum">#&nbsp;<?php $comments->sequence();?>&nbsp;</span>
-                                        <?php $comments->date('Y-m-d H:i');?>
-                                    </a>
-                                    <span class="comment-reply"><?php $comments->reply();?></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php if ($comments->children) {
-                    ?>
-                    <div class="comment-children">
-                        <?php $comments->threadedComments($options);
-                        ?>
-                    </div>
-                    <?php
-                }
-                ?>
-            </div>
+    
+    <div  class="list-item reply-wrap ">
+        
+        <?php if ($depth == 1) { ?>
+        <div class="user-face">
+            <a href="<?php $comments->permalink();?>" target="_blank" >
+               <?php $comments->gravatar('40', 'https://i.loli.net/2018/10/28/5bd55579d2d72.png');?>
+            </a>
         </div>
-
-
-    </li>
-    <?php
-}
-?>
-
-<div id="comments">
-    <?php $this->comments()->to($comments);
-    ?>
-    <?php if ($comments->have()): ?>
-    <h3><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论'));
-        ?></h3>
-
-    <?php $comments->listComments();
-    ?>
-
-    <?php $comments->pageNav('&laquo; 前一页', '后一页 &raquo;');
-    ?>
-
-    <?php endif;
-    ?>
-
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <?php if ($this->allow('comment')): ?>
-            <div id="<?php $this->respondId();
-                ?>" class="respond">
-                <div class="cancel-comment-reply">
-                    <?php $comments->cancelReply();
-                    ?>
-                </div>
-
-                <!--<h3 id="response"><?php _e('添加新评论');
-                ?></h3>-->
-                <?php if ($this->user->hasLogin()): ?>
-                <p>
-                    <?php _e('登录身份: ');
-                    ?><a href="<?php $this->options->profileUrl();
-                        ?>"><?php $this->user->screenName();
-                        ?></a>. <a href="<?php $this->options->logoutUrl();
-                        ?>" title="Logout"><?php _e('退出');
-                        ?> &raquo;</a>
-                </p>
-                <?php else : ?>
-
-                <div class="row clearfix">
-                    <form method="post" action="<?php $this->commentUrl() ?>" id="add-comment" >
-                        <div class="col-md-2 column" style="padding-top: 40px;">
-                            <img src="<?php if ($this->remember('mail',true)): ?><?php _e('https://gravatar.loli.net/avatar/'.md5($this->remember('mail',true)))?><?php else :_e('https://i.loli.net/2018/10/28/5bd55579d2d72.png')?><?php endif;
-                            ?>" id="chead" style="float: right;position: relative;width: 48px;height: 48px;border-radius: 50%;margin-left: 8px;">
-                        </div>
-                        <div class="col-md-10 column">
-                            <div class="row clearfix">
-                                <div class="col-md-3 column" style="padding-left:10px;margin-bottom:2px">
-                                    <div class="bs-example bs-example-form" role="form">
-                                        <div class="input-group">
-                                            <label for="author">称呼</label>
-                                            <!--<span class="input-group-addon"><?php _e('称呼');
-                                                ?></span>-->
-                                            <input type="text" class="form-control text" placeholder="昵称" name="author" id="author" value="<?php $this->remember('author');
-                                            ?>" required>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="col-md-3 column" style="padding-left:10px;margin-bottom:2px">
-                                    <div class="bs-example bs-example-form" role="form">
-                                        <div class="input-group">
-                                            <label for="mail">邮箱</label>
-                                            <!--<span class="input-group-addon<?php if ($this->options->commentsRequireMail): ?> required<?php endif;
-                                                ?>"><?php _e('Email');
-                                                ?></span>-->
-                                            <input type="text" class="form-control text" placeholder="邮箱地址" name="mail" id="mail" value="<?php $this->remember('mail');
-                                            ?>" <?php if ($this->options->commentsRequireMail): ?> required<?php endif;
-                                            ?> />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 column" style="padding-left:10px;margin-bottom:2px">
-                                    <div class="bs-example bs-example-form" role="form">
-                                        <div class="input-group">
-                                            <label for="url">网站</label>
-                                            <!--<span class="input-group-addon"<?php if ($this->options->commentsRequireURL): ?> class="required"<?php endif;
-                                                ?>><?php _e('网站');
-                                                ?></span>-->
-                                            <input type="text" class="form-control text text-url" placeholder="<?php _e('http://');
-                                            ?>" name="url" id="url" value="<?php $this->remember('url');
-                                            ?>" <?php if ($this->options->commentsRequireURL): ?> required<?php endif;
-                                            ?> />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endif;
-                            ?>
-                            <?php if ($this->user->hasLogin()): ?>
-                            <form method="post" action="<?php $this->commentUrl() ?>">
-                                <?php endif;
-                                ?>
-                                <div class="row clearfix"<?php if ($this->user->hasLogin()): ?> style="padding-left:8px"<?php endif;?>>
-                                    <div class="col-md-9 column" style="padding-left:8px">
-                                        <textarea rows="8" cols="50" name="text" id="textarea" class="textarea" required><?php $this->remember('text');
-                                            ?></textarea>
-                                    </div>
-                                    <div class="col-md-1 column" style="padding-left:8px">
-                                        <button type="submit" class="submit"><?php _e('提交评论');
-                                            ?></button>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-md-12 column">
-                                        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowOwO', $this->options->sidebarBlock) && !$this->is('index')): ?>
-                                        	
-                                        	<div id="OwO" class="OwO"></div>
-    										<script src="<?php $this->options->themeUrl('/OwO/OwO.min.js'); ?>"></script>
-											<script>
-												var OwO_json = "<?php $this->options->themeUrl('/OwO/OwO.json'); ?>";
-												var OwO_1 = new OwO({
-    											logo: '颜文字',
-    											container: document.getElementById('OwO'),
-    											target: document.getElementById('textarea'),
-    											api: OwO_json,
-    											position: 'down',
-    											width: '100%',
-    											maxHeight: '250px'
-    											});
-    										</script>
-                                        <?php endif;?>	
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </form>
-                    </div>
-                    <?php else : ?>
-                    <h3><?php _e('评论已关闭');
-                        ?></h3>
-                    <?php endif;
-                    ?>
-                </div>
+        
+        <?php }else{ ?>
+        
+        <a href="<?php $comments->permalink();?>" target="_blank" class="reply-face" <?php if(stristr($comments->content,"<img")){ echo 'style="top: 32px;"';}?>>
+               <?php $comments->gravatar('40', 'https://i.loli.net/2018/10/28/5bd55579d2d72.png');?>
+            </a> 
+        
+        <?php } ?>
+        
+        <div id="<?php $comments->theId();?>" class="<?php if ($depth == 1 ):?>con<?php elseif($depth == 2):?>con-2 <?php else :?>reply-con<?php endif;?>">
+            <div class="user">
+                <a  href="<?php $comments->permalink();?>" target="_blank" class="name"><?php $comments->author();?></a>
+                <a class="level-link" href="#" target="_blank">
+                    <i class="level <?php if($comments->authorId == $comments->ownerId){echo "l9";}else{get_level($comments->mail);}?>"></i>
+                </a>
             </div>
-
-
+            <div class="text text-con">
+                <?php /*echo "当前评论层数".$depth;*/get_comment_at($comments->coid);$comments->content();?>
+            </div>
+            <div class="info">
+                <span class="time"><?php if ($depth == 1 ):?>#&nbsp;<?php $comments->sequence();?>&nbsp;<?php endif;?><?php echo timesince($comments->created);?></span>
+                <span class="like " id="<?php echo $theId;?>_like" data-coid="<?php echo $comments->coid;?>" data-num="<?php likesNum($comments->coid);?>">
+                    <i></i>
+                    <span id="cmt_zan_num_<?php echo $comments->coid;?>"><?php likesNum($comments->coid);?></span>
+                </span>
+                <span class="reply btn-hover "><?php $comments->reply("回复");?></span>
+            </div>
+            
+            <div class="paging-box"></div>
         </div>
-</div>
+        
+        <?php if ($comments->children) { ?>
+            <div class="reply-box" >
+                <?php $comments->threadedComments($options);?>
+            </div>
+            <?php } //子回复层判断结束?>
+    </div>
+</li>
+
+
+    <?php }?>

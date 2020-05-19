@@ -1,100 +1,183 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php if (!is_pjax()):?>
-<?php $this->need('header.php'); ?>
-<?php endif;?>
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+?>
+<?php $this->need('header.php');
+?>
 
-<!--中间部分-->             
-                        <script>
-                            $(document).attr("title","<?php $this->title()?>");
-                            $('#post-category').html("<!-- index-menu -->");
-                            if($(document).width()<800){
-                            $('#smartFloat').css({'display':'none'});
-                            $('#ownerinfo').hide();
-                            $("#Comments_Recent,#Post_Recent").hide();
-                            }else{
-                                $('#smartFloat').show();
-                            };
-                        </script>
-                            <!--面包屑导航-->
-                            <div class="row clearfix">
-                                <div class="<?php if (!is_pjax()):?>
-                                            col-md-8 column col-md-offset-1
-                                            <?php else:?>
-                                            col-md-12 column
-                                            <?php endif;?>" style="margin-bottom: -32px;">
-                                    <div class="breadcrumb">
-                                        当前位置：<a href="<?php $this->options->siteUrl(); ?>" class="a">主页</a> &raquo;</li>
-	                                    <?php if ($this->is('index')): ?><!-- 页面为首页时 -->
-		                                最新文章
-	                                    <?php elseif ($this->is('post')): ?><!-- 页面为文章单页时 -->
-		                                <?php $this->category(); ?> &raquo; <?php $this->title() ?>
-	                                    <?php else: ?><!-- 页面为其他页时 -->
-		                                <?php $this->archiveTitle(' &raquo; ','',''); ?>
-	                                    <?php endif; ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--文章主体-->
-                            <div class="row clearfix" >
-                                <div class="<?php if (!is_pjax()):?>
-                                            col-md-8 column col-md-offset-1
-                                            <?php else:?>
-                                            col-md-12 column
-                                            <?php endif;?>">
-                                    <article class="post" style="background-color:#fff;border-radius:8px;box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.09);">
-                                                <div class="post-head blur" style="background-image: url(<?php $this->fields->thumb(); ?>);background-position-x:center;background-position-y:center;width:100%;height:100px;">
-                                                </div>
-                                                <h1 class="post-title" href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h1>
-                                              <ul class="post-meta">
-                                                <li itemprop="author" itemscope itemtype="http://schema.org/Person"><?php _e('作者: '); ?>
-                                                <a itemprop="name" href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a>
-                                                </li>
-                                                <li><?php _e('时间: '); ?><time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time>
-                                                </li>
-                                                <li><?php _e('分类: '); ?><?php $this->category(','); ?>
-                                                </li>
-                                                <li>
-                                                    <?php if($this->user->hasLogin()):?>
-                                                    <a href="/admin/write-post.php?cid=<?php echo $this->cid;?>" target="_blank">编辑</a>
-                                                    <?php endif;?>
-                                                </li>    
-                                              </ul>
-                                              <div class="post-content" itemprop="articleBody">
-                                                <?php $this->content(); ?>
-                                              
-                                            <p itemprop="keywords" class="post-tags"><?php $this->tags('  ', true, 'none'); ?> &nbsp;&nbsp;
-                                            <a class="btn-like" data-cid="<?php $this->cid();?>" data-num="<?php $this->likesNum();?>">
-                                                <i  class="like-ico"></i>
-                                                <span class="post-likes-num">
-                                                <?php $this->likesNum();?></span>
-                                            </a>
-                                            </p>
-                                            </div>
-                                    </article>
-                                        <ul class="post-near">
-                                        <li style="min-width: 45%;text-overflow:ellipsis;">上一篇: <?php $this->thePrev('%s','没啦'); ?></li>
-                                        <li style="float: right;width: 45%;text-overflow:ellipsis;">下一篇: <?php $this->theNext('%s','没啦'); ?></li>
-                                        </ul>
-                                        <?php $this->need('comments.php'); ?>
-                                        
-                                        <script>
-                                        var imgs=$(".post-content img:not(.smilies)");
-                                        for(i=0;i<imgs.length;i++){
-                                            var imgs=$(".post-content img:not(.smilies)");
-                                            imgs[i].outerHTML= '<a href="' + imgs[i].src +' "data-fancybox="images" data-caption="' + imgs[i].alt + '" >' + '<div class="post-img"><img data-original="'+imgs[i].src+'" src="https://i.loli.net/2018/10/30/5bd8193caea80.gif" class="lazyload" alt="'+ imgs[i].alt +'" title="'+ imgs[i].title +'"></div>' + '<\/a>';
-                                        };
-                                        $('[data-fancybox="images"]').fancybox({
-    	                                    'transitionIn': 'elastic', //窗口显示的方式 
-                                            'transitionOut': 'elastic'
-                                        });
-                                        $("img.lazyload").lazyload({effect:'fadeIn'});
-                                        </script>
-                                </div>
-                            </div>
-                        </div>
+<!--中间部分-->
+<script>
+    isindex = false;
+    $(document).attr("title", "<?php $this->title() ?>");
+    $("body").attr("style", "background:#fff");
+</script>
+<!--文章主体-->
+<div class="post-container">
+
+    <?php $this->need('sidebar-l.php');
+    ?>
+    <?php $this->need('sidebar-r.php');
+    ?>
+    <div class="head-container">
+        <?php if ($this->fields->thumb): ?>
+        <div class="post-head blur" style="background-image: url(<?php $this->fields->thumb();
+            ?>);background-position-x:center;background-position-y:center;width:100%;height:100px;">
+        </div>
+        <?php endif;
+        ?>
+        <div class="argue-flag hidden"></div>
+        <div class="title-container">
+            <h1 class="title"><?php $this->title() ?></h1>
+            <div class="info">
+                <a class="category-link" href="//www.bilibili.com/read/life#rid=15" target="_blank"><span><?php $this->category(',');
+                    ?></span></a>
+                <span class="create-time"><?php _e('时间: ');
+                    ?><time datetime="<?php $this->date('c');
+                        ?>" itemprop="datePublished"><?php $this->date();
+                        ?></time></span>
+                <div class="article-data">
+                    <span><?= get_post_view($this);
+                        ?>阅读</span>
+                    <span> <?php $this->likesNum();
+                        ?>点赞</span>
+                    <span><?php $this->commentsNum('%d');
+                        ?>评论</span>
+                    <?php if($this->user->hasLogin()):?><span><a href="<?php $this->options->adminUrl('write-post.php')?>/write-post.php?cid=<?php echo $this->cid;?>" target="_blank">编辑</a></span><?php endif;?>    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <article class="post-content">
+        <?php $this->content();
+        ?>
+    </article>
+
+    <p class="original">
+        本文为<?php switch ($this->fields->post_type) {
+            case "原创":  echo "我原创";
+                break;
+            case "转载":  echo "转载";
+                break;
+            default: $this->fields->post_type();
+        }
+        ?>
+    </p>
+    <p class="authority">
+        本文<?php switch ($this->fields->authority) {
+            case "禁止转载":  echo "禁止转载";
+                break;
+            case "注明出处":  echo "转载请注明出处";
+                break;
+            case "随意转载":  echo "可随意转载";
+                break;
+            default: $this->fields->authority();
+        }
+        ?>
+    </p>
+    <p itemprop="keywords" class="post-tags">
+        <?php $this->tags('  ', true, 'none');
+        ?>
+    </p>
+    <div class="article-action">
+        <div class="ops like_btns" data-cid="<?php $this->cid();
+            ?>" data-num="<?php likesNum();
+            ?>">
+            <span class="like-btn ">
+                <i class="icon-video-details_like" id="like_i_<?php $this->cid();
+                    ?>"></i>
+                <span id="like_s_<?php $this->cid();
+                    ?>"><?php likesNum();
+                    ?></span>
+            </span>
+            <span class="share-container share-btn">
+                点击复制：<span>
+                    <script src="<?php $this->options->themeUrl('static/js/qrcode.min.js');
+                        ?>"></script>
+                    <script src="<?php $this->options->themeUrl('static/js/clipboard.min.js');
+                        ?>"></script>
+                    <a href="javascript:void(0)" id="copy_url"><i class="icon-share_news_default" title="复制链接"><div id="qrcode_url_box" class="qrbox-holder"></div>
+                    </i></a>
+
+                </span>
+            </span>
+
+            <script>
+                $(function() {
+                    new QRCode(document.getElementById("qrcode_url_box"), {
+                        text: _now_url,
+                        width: 148,
+                        height: 148,
+                        colorDark: "#000000",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                });
+                $("#copy_url").hover(function() {
+                    $("#qrcode_url_box").toggle();
+                });
+                $("#copy_url").click(function() {
+                    $("#copy_url").attr("data-clipboard-text", _now_url)
+                    var clipboard = new ClipboardJS('#copy_url');
+                    clipboard.on('success', function (e) {
+                        $.jGrowl.defaults.position = 'center';
+                        $.jGrowl('本文地址复制成功！');
+                    });
+                });
+            </script>
+        </div>
+    </div>
+    
+    <div class="article-list-plane">
+                <a id="Prev_a" href="<?php prev_post($this,'url');?>" target="_self"><div class="button">
+                    <div class="label btn1">
+                        &lt; 上一篇
+                    </div>
+                    <div class="title" >
+                        <?php prev_post($this,'','没了');?>
+                    </div>
+                </div>
+                </a>
+                <a  href="<?php $this->options->siteUrl(); ?>index.php/timeline.html" target="_self">
+                <div class="button" id="article-list-btn">
+                    <div class="label">
+                        文章归档
+                    </div>
+                    <div class="title">
+                        <?php $this->cid();?>/<?php max_cid(); ?>
+                </div>
+                </a>
+                </div>
+                <a id="Next_a" href=" <?php next_post($this,'url');?>" target="_self"><div class="button btn2">
+                    <div class="label">
+                        下一篇 &gt;
+                    </div>
+                    <div class="title" >
+                        <?php next_post($this,'','没了');?>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+    <?php $this->need('comments.php');
+    ?>
+    <script>
+        var imgs = $(".post-content img:not(.smilies)");
+        for (i = 0; i < imgs.length; i++) {
+            var imgs = $(".post-content img:not(.smilies)");
+            imgs[i].outerHTML = '<a href="' + imgs[i].src +' "data-fancybox="images" data-caption="' + imgs[i].alt + '" >' + '<div class="post-img"><img data-original="'+imgs[i].src+'" src="https://i.loli.net/2018/10/30/5bd8193caea80.gif" class="lazyload" alt="'+ imgs[i].alt +'" title="'+ imgs[i].title +'"></div>' + '<\/a>';
+        };
+        $('[data-fancybox="images"]').fancybox({
+            'transitionIn': 'elastic', //窗口显示的方式
+            'transitionOut': 'elastic'
+        });
+        $("img.lazyload").lazyload({
+            effect: 'fadeIn'
+        });
+    </script>
+</div>
+</div>
+</div>
 
 
 <!--</div> end #main-->
-<?php if (!is_pjax()):?>
-<?php $this->need('footer.php'); ?>
-<?php endif;?>
+<?php $this->need('footer.php');
+?>

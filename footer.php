@@ -1,55 +1,89 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<!--TO-TOP-->
-<p id="to-top"><a href="#top"><span></span></a></p>
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+?>
+
 
 <!--底部footer-->
-                            <div class="">
-                                <div class="col-xs-12 col-md-12 col-lg-12 column">
-                                    <div class="footer text-center " id="footer">
-                                    <a href="<?php $this->options->adminUrl('login.php'); ?>" class="a">&copy;</a>2015-<?php echo date('Y'); ?> 
-                                    <a href="<?php $this->options->siteUrl(); ?>" class="a">
-                                        <?php $this->options->title(); ?>
-                                    </a>
-                                    <?php _e('由 <a href="http://www.typecho.org" class="a">Typecho</a> 强力驱动'); ?>. 
-                                    Theme <a href="https://github.com/menhood/Typecho-Theme-BiliBlog/" class="a">BiliBlog</a> 
-                                    <br>
-                                    <a href="<?php $this->options->feedUrl(); ?>" target="_blank" class="a">文章RSS</a> <!-- 文章的RSS地址连接 -->|
-                                    <a href="<?php $this->options->commentsFeedUrl(); ?>" target="_blank" class="a">评论RSS</a>. <!-- 评论的RSS地址连接 -->
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-<?php $this->footer(); ?>
+<!--<div class="footer " id="footer">-->
+<!--<span style="font-size:12px;color:#99a2aa">下面啥也木有</span>-->
+<!--</div>-->
 
-        <script type="text/javascript" data-no-instant="true" src="<?php $this->options->themeUrl('biliblog.js'); ?>"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123390780-1"></script>
-        <script>
-        var OriginTitile = document.title;
-        var titleTime;
-        <?php if (!is_pjax()):?>loadhljs();<?php endif;?>
-        var OriginIco = document.getElementById("tabico").href;
-        document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-        document.title = '(つェ⊂) 信号搜寻中··· ' + OriginTitile;
-        clearTimeout(titleTime);
-        document.getElementById("tabico").href="https://i.loli.net/2018/10/26/5bd287ccc93fe.png";
-    }
-    else {
-        document.title = '(*´∇｀*) 找到信号辣！ ' + OriginTitile;
-        document.getElementById("tabico").href=OriginIco;
-        titleTime = setTimeout(function() {
-            document.title = OriginTitile;
-        }, 2000);
-    }
+<?php $this->footer();
+?>
+
+<script type="text/javascript" data-no-instant="true" src="<?php echo $this->options->rootUrl;
+?>/usr/themes/biliblog/static/js/biliblog.js"></script>
+<script src="<?php $this->options->themeUrl('static/js/prism.js'); ?>"></script>
+<script>
+//赋值
+login_url = "<?php $this->options->loginAction()?>";
+//文章点赞
+$(document).on('click', '.like_btns' ,function(e) {
+    var id = $(this).attr('data-cid');
+    var num = $(this).attr('data-num');
+    $.ajax({
+        type: 'post',
+        url: '<?php Helper::options()->index('/action/like'); ?>',
+        data:{cid: id},
+        success: function(data) {
+            console.log(data);
+            // console.log(textStatus);
+            // console.log(XMLHttpRequest);
+            if (data == "post like success") {
+                num++;
+                var i_id = "#like_i_"+id,s_id = "#like_s_"+id;
+                $(i_id).attr("class","custom-like-icon zan-active");
+                $(s_id).text(num);
+            };
+        },
+        error: function(data) {
+            console.log(data);
+            $.jGrowl.defaults.position = 'center';
+            $.jGrowl('点赞失败！');
+        }
+    });
 });
- 
-
-        </script>
-    </body>
+//评论点赞
+$(document).on('click', '.info .like' ,function(e) {
+    var coid = $(this).attr('data-coid');
+    var num = $(this).attr('data-num');
+    $.ajax({
+        type: 'post',
+        url: '<?php Helper::options()->index('/action/like?type=comment'); ?>',
+        data:{coid: coid},
+        success: function(data) {
+            console.log(data);
+            if (data == "comment like success") {
+                num++;
+                var i_id = "#comment-"+coid+"_like",s_id = "#cmt_zan_num_"+coid;
+                $(i_id).attr("class","like like-active ");
+                $(s_id).text(num);
+            };
+        },
+        error: function(data) {
+            console.log(data);
+            $.jGrowl.defaults.position = 'center';
+            $.jGrowl('点赞失败！');
+        }
+    });
+});
+//切换tab显示文字
+var OriginTitile = document.title;
+var titleTime;
+var OriginIco = document.getElementById("tabico").href;
+document.addEventListener('visibilitychange', function() {
+if (document.hidden) {
+document.title = '(つェ⊂) 信号搜寻中··· ' + OriginTitile;
+clearTimeout(titleTime);
+document.getElementById("tabico").href = "https://i.loli.net/2018/10/26/5bd287ccc93fe.png";
+} else {
+document.title = '(*´∇｀*) 找到信号辣！ ' + OriginTitile;
+document.getElementById("tabico").href = OriginIco;
+titleTime = setTimeout(function() {
+document.title = OriginTitile;
+}, 2000);
+}
+});
+</script>
+</body>
 
 </html>
-
-

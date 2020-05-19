@@ -1,0 +1,386 @@
+{
+    "颜文字": {
+        "type": "emoticon",
+        "container": [{
+                "icon": "OωO",
+                "text": "Author: DIYgod"
+            }, {
+                "icon": "|´・ω・)ノ",
+                "text": "Hi"
+            }, {
+                "icon": "ヾ(≧∇≦*)ゝ",
+                "text": "开心"
+            }, {
+                "icon": "(☆ω☆)",
+                "text": "星星眼"
+            }, {
+                "icon": "（╯‵□′）╯︵┴─┴",
+                "text": "掀桌"
+            }, {
+                "icon": "￣﹃￣",
+                "text": "流口水"
+            }, {
+                "icon": "(/ω＼)",
+                "text": "捂脸"
+            }, {
+                "icon": "∠( ᐛ 」∠)＿",
+                "text": "给跪"
+            }, {
+                "icon": "(๑•̀ㅁ•́ฅ)",
+                "text": "Hi"
+            }, {
+                "icon": "→_→",
+                "text": "斜眼"
+            }, {
+                "icon": "୧(๑•̀⌄•́๑)૭",
+                "text": "加油"
+            }, {
+                "icon": "٩(ˊᗜˋ*)و",
+                "text": "有木有WiFi"
+            }, {
+                "icon": "(ノ°ο°)ノ",
+                "text": "前方高能预警"
+            }, {
+                "icon": "(´இ皿இ｀)",
+                "text": "我从未见过如此厚颜无耻之人"
+            }, {
+                "icon": "⌇●﹏●⌇",
+                "text": "吓死宝宝惹"
+            }, {
+                "icon": "(ฅ´ω`ฅ)",
+                "text": "已阅留爪"
+            }, {
+                "icon": "(╯°A°)╯︵○○○",
+                "text": "去吧大师球"
+            }, {
+                "icon": "φ(￣∇￣o)",
+                "text": "太萌惹"
+            }, {
+                "icon": "ヾ(´･ ･｀｡)ノ\"",
+                "text": "咦咦咦"
+            }, {
+                "icon": "( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃",
+                "text": "气呼呼"
+            }, {
+                "icon": "(ó﹏ò｡)",
+                "text": "我受到了惊吓"
+            }, {
+                "icon": "Σ(っ °Д °;)っ",
+                "text": "什么鬼"
+            }, {
+                "icon": "( ,,´･ω･)ﾉ\"(´っω･｀｡)",
+                "text": "摸摸头"
+            }, {
+                "icon": "╮(╯▽╰)╭ ",
+                "text": "无奈"
+            }, {
+                "icon": "o(*////▽////*)q ",
+                "text": "脸红"
+            }, {
+                "icon": "＞﹏＜",
+                "text": ""
+            }, {
+                "icon": "( ๑´•ω•) \"(ㆆᴗㆆ)",
+                "text": ""
+            }, {
+                "icon": "(｡•ˇ‸ˇ•｡)",
+                "text": ""
+            }, {
+                "icon": "(๑•̀ω•́๑)",
+                "text": ""
+            }, {
+                "icon": "(๑•́ ₃ •̀๑)",
+                "text": ""
+            }, {
+                "icon": "(灬°ω°灬)",
+                "text": ""
+            }, {
+                "icon": "(*^ω^*)",
+                "text": ""
+            }, {
+                "icon": "✧*。٩(ˊωˋ*)و✧*。",
+                "text": ""
+            }, {
+                "icon": "(￣y▽￣)~*捂嘴偷笑",
+                "text": ""
+            }, {
+                "icon": "(o`•ω•)ノ(ノД`)",
+                "text": ""
+            }, {
+                "icon": "(⌒▽⌒)",
+                "text": ""
+            }, {
+                "icon": "（￣▽￣）",
+                "text": ""
+            }, {
+                "icon": "(=・ω・=)",
+                "text": ""
+            }, {
+                "icon": "(｀・ω・´)",
+                "text": ""
+            }, {
+                "icon": "(〜￣△￣)〜",
+                "text": ""
+            }, {
+                "icon": "(･∀･)",
+                "text": ""
+            }, {
+                "icon": "(°∀°)ﾉ",
+                "text": ""
+            }, {
+                "icon": "(￣3￣)",
+                "text": ""
+            }, {
+                "icon": "╮(￣▽￣)╭",
+                "text": ""
+            }, {
+                "icon": "( ´_ゝ｀)",
+                "text": ""
+            }, {
+                "icon": "←_←",
+                "text": ""
+            }, {
+                "icon": "→_→",
+                "text": ""
+            }, {
+                "icon": "(<_<)",
+                "text": ""
+            }, {
+                "icon": "(>_>)",
+                "text": ""
+            }, {
+                "icon": "(;¬_¬)",
+                "text": ""
+            }, {
+                "icon": "(\"▔□▔)",
+                "text": ""
+            }, {
+                "icon": "(ﾟДﾟ≡ﾟдﾟ)!?",
+                "text": ""
+            }, {
+                "icon": "Σ(ﾟдﾟ;)",
+                "text": ""
+            }, {
+                "icon": "Σ( ￣□￣||)",
+                "text": ""
+            }, {
+                "icon": "(´；ω；`)",
+                "text": ""
+            }, {
+                "icon": "（/TДT)/",
+                "text": ""
+            }, {
+                "icon": "(^・ω・^ )",
+                "text": ""
+            }, {
+                "icon": "(｡･ω･｡)",
+                "text": ""
+            }, {
+                "icon": "(●￣(ｴ)￣●)",
+                "text": ""
+            }, {
+                "icon": "ε=ε=(ノ≧∇≦)ノ",
+                "text": ""
+            }, {
+                "icon": "(´･_･`)",
+                "text": ""
+            }, {
+                "icon": "(-_-#)",
+                "text": ""
+            }, {
+                "icon": "（￣へ￣）",
+                "text": ""
+            }, {
+                "icon": "(￣ε(#￣) Σ",
+                "text": ""
+            }, {
+                "icon": "ヽ(`Д´)ﾉ",
+                "text": ""
+            }, {
+                "icon": "(╯°口°)╯(┴—┴",
+                "text": ""
+            }, {
+                "icon": "（#-_-)┯━┯",
+                "text": ""
+            }, {
+                "icon": "_(:3」∠)_",
+                "text": ""
+            }, {
+                "icon": "_(•̀ω•́ 」∠)_",
+                "text": ""
+            }, {
+                "icon": "─=≡Σ((( つ•̀ω•́)つ",
+                "text": ""
+            }, {
+                "icon": "(ಥ_ಥ)",
+                "text": ""
+            }, {
+                "icon": "(๑╹∀╹๑)",
+                "text": ""
+            }, {
+                "icon": "눈_눈",
+                "text": ""
+            }, {
+                "icon": "ᕦ(ò_óˇ)ᕤ",
+                "text": ""
+            }, {
+                "icon": "(๑•ั็ω•็ั๑)",
+                "text": ""
+            }, {
+                "icon": "( *・ω・)✄╰ひ╯",
+                "text": ""
+            }, {
+                "icon": "~(￣▽￣)C❀(捏菊花)",
+                "text": ""
+            }, {
+                "icon": "(((┏(;￣▽￣)┛装完逼就跑",
+                "text": ""
+            }, {
+                "icon": "(๑•̀ㅂ•́)و✧ ",
+                "text": "赞"
+            }
+        ]
+    },
+    "滑稽": {
+        "type": "image",
+        "container": [{
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji2.png\" style=\"height:32px\" >",
+                "text": "huaji2"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji4.png\" style=\"height:32px\" >",
+                "text": "huaji4"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji5.gif\" style=\"height:32px\" >",
+                "text": "huaji5"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji6.png\" style=\"height:32px\" >",
+                "text": "huaji6"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji8.png\" style=\"height:32px\" >",
+                "text": "huaji8"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji9.png\" style=\"height:32px\" >",
+                "text": "huaji9"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji11.png\" style=\"height:32px\" >",
+                "text": "huaji11"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji12.png\" style=\"height:32px\" >",
+                "text": "huaji12"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji14.png\" style=\"height:32px\" >",
+                "text": "huaji14"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji15.png\" style=\"height:32px\" >",
+                "text": "huaji15"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji16.gif\" style=\"height:32px\" >",
+                "text": "huaji16"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji11.png\" style=\"height:32px\" >",
+                "text": "huaji11"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji18.png\" style=\"height:32px\" >",
+                "text": "huaji18"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji19.png\" style=\"height:32px\" >",
+                "text": "huaji19"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji20.gif\" style=\"height:32px\" >",
+                "text": "huaji20"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji21.gif\" style=\"height:32px\" >",
+                "text": "huaji21"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji22.png\" style=\"height:32px\" >",
+                "text": "huaji22"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//cdn.jsdelivr.net/gh/showrbq/kratos-alpha@latest/images/smilies/huaji23.png\" style=\"height:32px\" >",
+                "text": "huaji23"
+            }
+        ]
+    },
+    "不稳定情绪": {
+        "type": "image",
+        "container": [{
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/2d93260627adc959.jpg\" style=\"height:32px\" >",
+                "text": "啊~"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/2695c9dc363f5047.jpeg\" style=\"height:32px\" >",
+                "text": "……"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/dafcc8c504e59771.jpeg\" style=\"height:32px\" >",
+                "text": "我就死定了"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/88cb344dfacd4b79.jpeg\" style=\"height:32px\" >",
+                "text": "哇的一声哭了出来"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/c3180321a1cd428b.jpeg\" style=\"height:32px\" >",
+                "text": "lxlmjsdls"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/5af50869de1065ac.jpeg\" style=\"height:32px\" >",
+                "text": "……"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/3d800cd0b376a7c9.jpeg\" style=\"height:32px\" >",
+                "text": "zs"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/c184a49d7822f08d.jpeg\" style=\"height:32px\" >",
+                "text": "？！"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/64cfd718ed1ab799.jpeg\" style=\"height:32px\" >",
+                "text": "……"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/a570e368657159e9.jpeg\" style=\"height:32px\" >",
+                "text": "我好菜啊"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/5b5653440621046c.jpeg\" style=\"height:32px\" >",
+                "text": "……"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/3b55c9fa9e0c3ba7.jpeg\" style=\"height:32px\" >",
+                "text": "a?"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/dd55a22db04cd8ff.jpeg\" style=\"height:32px\" >",
+                "text": "……"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/images/201903/7544e32a625f0c99.jpeg\" style=\"height:32px\" >",
+                "text": "我还能说什么"
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihvzci.gif\" style=\"height:32px\" >",
+                "text": "..."
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihvwgh.jpg\" style=\"height:32px\" >",
+                "text": "..."
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihvyg4.png\" style=\"height:32px\" >",
+                "text": "..."
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihw808.gif\" style=\"height:32px\" >",
+                "text": "..."
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihwaqa.jpg\" style=\"height:32px\" >",
+                "text": "..."
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihwax4.jpg\" style=\"height:32px\" >",
+                "text": "..."
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihwmjm.jpg\" style=\"height:32px\" >",
+                "text": "..."
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihwmuy.jpg\" style=\"height:32px\" >",
+                "text": "..."
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihwl8d.jpg\" style=\"height:32px\" >",
+                "text": "..."
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihwrns.jpg\" style=\"height:32px\" >",
+                "text": "..."
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihwv9l.jpg\" style=\"height:32px\" >",
+                "text": "..."
+            }, {
+                "icon": "<img class=\"smilies\" src=\"//img.menhood.wang/i/2020/02/13/ihwucu.jpg\" style=\"height:32px\" >",
+                "text": "..."
+            }
+        ]
+    }
+}
