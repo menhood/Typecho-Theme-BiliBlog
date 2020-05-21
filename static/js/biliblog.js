@@ -63,16 +63,12 @@ $(window).scroll(function() {
 
 //加载完成调用
 $(function() {
-
-    if ($(document).width() < 775) {
-        $('#navbar-collapse-1').collapse("hide");
-    }
-
+    // 初始化滚动进度条
     $('.post').scrollgress({
         height: '42px',
         color: '#00a1d6',
         success: function() {
-            console.log('Scrollgress has been initiated.');
+            console.log('滚动进度条初始化成功！');
         }
     });
 
@@ -482,7 +478,10 @@ function setHistoryItems(keyword) {
       if (isNotExists) localStorage.historyItems += '|' + keyword;
     }
 }
-
+//屏幕大小警告
+function widtherror(){
+  alert("真的没有移动端样式(ｐ・・q）");
+}
 function googleanalytics() {
     window.dataLayer = window.dataLayer || [];
 

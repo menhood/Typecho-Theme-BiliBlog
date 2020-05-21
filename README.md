@@ -2,9 +2,9 @@
 > 🍻 Typecho Bilibili配色风格主题
 
 ![](https://img.shields.io/badge/Typecho-1.1-orange.svg)
-![](https://img.shields.io/badge/Biliblog-1.0.3-blue.svg)
+![](https://img.shields.io/badge/Biliblog-2.0_Alpha-blue.svg)
 
-![](https://i.loli.net/2019/01/03/5c2d6ecfd0dd3.jpg)
+![](https://i.loli.net/2020/05/22/ez8PsF4wdtuHWYo.png)
 
 > 在线示例：http://biliblog.menhood.wang/
 
@@ -14,10 +14,12 @@
 具体功能请看主题设置部分，没有的选项可以[点此](https://blog.menhood.wang/archives/BiliBlog.html)
 查看详细及反馈
 
+**2.0版本去除了pjax，也去除了移动端样式**
+
+现在处于魔改阶段，各种bug都会有，😆
+
 ### 安装
 上传至主题目录 `/usr/themes/` 然后文件夹改名为 `biliblog` 即可
-
-~~部分功能需要插件支持~~
 
 ### 自定义
 #### 自定义首页

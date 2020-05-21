@@ -9,7 +9,8 @@
 
 <?php $this->footer();
 ?>
-
+</div>
+<!--主体容器结束-->
 <script type="text/javascript" data-no-instant="true" src="<?php echo $this->options->rootUrl;
 ?>/usr/themes/biliblog/static/js/biliblog.js"></script>
 <script src="<?php $this->options->themeUrl('static/js/prism.js'); ?>"></script>

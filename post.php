@@ -52,22 +52,22 @@
     </article>
 
     <p class="original">
-        本文为<?php switch ($this->fields->post_type) {
-            case "原创":  echo "我原创";
+       <?php switch ($this->fields->post_type) {
+            case "原创":  echo " 本文为我原创";
                 break;
-            case "转载":  echo "转载";
+            case "转载":  echo " 本文为转载";
                 break;
             default: $this->fields->post_type();
         }
         ?>
     </p>
     <p class="authority">
-        本文<?php switch ($this->fields->authority) {
-            case "禁止转载":  echo "禁止转载";
+        <?php switch ($this->fields->authority) {
+            case "禁止转载":  echo "本文禁止转载";
                 break;
-            case "注明出处":  echo "转载请注明出处";
+            case "注明出处":  echo "本文转载请注明出处";
                 break;
-            case "随意转载":  echo "可随意转载";
+            case "随意转载":  echo "本文可随意转载";
                 break;
             default: $this->fields->authority();
         }

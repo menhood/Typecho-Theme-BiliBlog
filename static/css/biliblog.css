@@ -1,10 +1,25 @@
 
 @media (max-width: 768px){
-#body {
+#container {
     display: none;
 }
 #widtherror {
     display: block!important;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                display: table;
+                font-weight: 100;
+                font-family: 'Lato';
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+                display: inline-block;
+                font-size: 33px;
+                color: #000;
+                text-decoration: none;
 }  
 }
 
@@ -48,7 +63,7 @@ body::-webkit-scrollbar {
 input, select {
     outline: none;
 }
-h1{}
+h1{font-size: 22px;}
 .article-holder h1 {
     font-size: 22px;
     font-weight: 700;
@@ -1314,7 +1329,7 @@ a:focus {
     background-color: #f4f4f4;
 }
 #article-list-index {
-    z-index: 9;
+    z-index: 999;
     right:0;
     top:0;
     position:fixed;

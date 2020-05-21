@@ -58,8 +58,9 @@
     </script>
 
 </head>
-<div id="widtherror"><a href="#" rel="nofollow">|ω・) 屏幕太小，放不下内容</a></div>
+<div id="widtherror"><a href="javascript:void(0);" onclick="widtherror()" rel="nofollow">|ω・) 屏幕太小，放不下内容</a></div>
 <body id="body">
+    <div id="container">
     <div id="closetoc_msk" style="position: fixed;width: calc(100% - 400px);z-index: 1;height: 100%;display:none;"></div>
     <div class="login-box-msk" id="login-box-msk"></div>
     <!--[if lt IE 8]>
@@ -67,7 +68,7 @@
     ?>.</div>
     <![endif]-->
 
-    <?php if ($this->is('index')): ?>    <!--<div class="container">-->
+    <?php if ($this->is('index')): ?>
         <?php endif;
         //判断主页结束 ?>
         <!--导航-->
