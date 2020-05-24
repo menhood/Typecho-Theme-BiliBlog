@@ -168,13 +168,13 @@ function get_author_AllViews($authorId)
 {
     $db = Typecho_Db::get();
     $row = $db->fetchAll($db->select('SUM(VIEWS)')->from('table.contents')->where('authorId = ?', $authorId));
-    echo number_format($row[0]['SUM(VIEWS)']);
+    echo number_format($row[0]["SUM(`VIEWS`)"]);
 }
 function get_author_Allzans($authorId)
 {
     $db = Typecho_Db::get();
-    $row = $db->fetchAll($db->select('SUM(VIEWS)')->from('table.contents')->where('authorId = ?', $authorId));
-    echo number_format($row[0]['SUM(VIEWS)']);
+    $row = $db->fetchAll($db->select('SUM(likes)')->from('table.contents')->where('authorId = ?', $authorId));
+    echo number_format($row[0]["SUM(`likes`)"]);
 }
 //上一篇
 function prev_post($archive,$echo_type='',$default_text='')
